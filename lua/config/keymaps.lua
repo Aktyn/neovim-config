@@ -7,6 +7,30 @@ vim.keymap.set("n", "<C-g>", function()
   require("Comment.api").toggle.linewise.current()
 end, { noremap = true, silent = true })
 
+-- Session management
+vim.keymap.del("n", "<leader>qd")
+vim.keymap.del("n", "<leader>ql")
+vim.keymap.del("n", "<leader>qs")
+vim.keymap.del("n", "<leader>qS")
+vim.keymap.set(
+  "n",
+  "<leader>qS",
+  "<cmd>NeovimProjectHistory<cr>",
+  { desc = "Show recent sessions", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>qs",
+  "<cmd>NeovimProjectLoadRecent<cr>",
+  { desc = "Open previous session", noremap = true, silent = true }
+)
+vim.keymap.set(
+  "n",
+  "<leader>qd",
+  "<cmd>NeovimProjectDiscover<cr>",
+  { desc = "Discover sessions", noremap = true, silent = true }
+)
+
 vim.keymap.set("x", "<C-g>", '<ESC><CMD>lua require("Comment.api").locked("toggle.linewise")(vim.fn.visualmode())<CR>')
 -- vim.keymap.del("", "/")
 -- vim.keymap.set("n", "/", "<Nop>", { noremap = true, silent = true })
@@ -63,7 +87,6 @@ vim.keymap.set("i", "<C-Del>", "<Esc>dwi", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
 
 -- Close current buffer
--- vim.keymap.set({ "n", "v" }, "<C-w>", ":bdelete<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-w>", function()
   require("mini.bufremove").delete(0, false)
 end, { noremap = true, silent = true })
@@ -118,6 +141,5 @@ vim.keymap.set("n", "<F12>", function(arg)
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<F11>", function()
-  -- vim.lsp.buf.references({ includeDeclaration = false })
   vim.cmd("Telescope lsp_references")
 end, { noremap = true, silent = true })
