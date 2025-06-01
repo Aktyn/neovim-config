@@ -33,7 +33,7 @@ require("lazy").setup({
     -- keymaps = false,
   },
   install = {
-    --colorscheme = { "catppuccin", "habamax" }
+    -- colorscheme = { "tokyonight-night" },
   },
   checker = {
     enabled = true, -- check for plugin updates periodically

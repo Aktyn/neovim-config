@@ -56,4 +56,61 @@ vim.keymap.set("i", "<C-u>", "<Esc><C-r>a", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-Del>", "<Esc>dwi", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
 
---
+-- Close current buffer
+-- vim.keymap.set({ "n", "v" }, "<C-w>", ":bdelete<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-w>", function()
+  require("mini.bufremove").delete(0, false)
+end, { noremap = true, silent = true })
+
+-- Go to definition
+vim.keymap.set("n", "<F12>", function(arg)
+  local params = vim.lsp.util.make_position_params(0, "utf-8")
+  vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result, _, _)
+    local function location_equal(loc)
+      -- Support both Location and LocationLink
+      local uri
+      local range
+      if loc.uri then
+        uri = loc.uri
+        range = loc.range
+      elseif loc.targetUri then
+        uri = loc.targetUri
+        range = loc.targetRange
+      end
+      if not uri or not range then
+        return false
+      end
+      -- Compare with current buffer/position
+      local bufnr = vim.api.nvim_get_current_buf()
+      local curr_uri = vim.uri_from_bufnr(bufnr)
+      local curr_row, curr_col = unpack(vim.api.nvim_win_get_cursor(0))
+      -- LSP is zero-based, Neovim is one-based
+      if
+        uri == curr_uri
+        and curr_row - 1 >= range.start.line
+        and curr_row - 1 <= range["end"].line
+        and curr_col >= range.start.character
+        and curr_col <= range["end"].character
+      then
+        return true
+      end
+      return false
+    end
+
+    local found = false
+    if result and not vim.tbl_isempty(result) then
+      local first = result[1] or result
+      if not location_equal(first) then
+        found = true
+        vim.lsp.buf.definition(arg)
+      end
+    end
+    if not found then
+      vim.cmd("Telescope lsp_references")
+    end
+  end)
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<F11>", function()
+  vim.lsp.buf.references({ includeDeclaration = false })
+end, { noremap = true, silent = true })

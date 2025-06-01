@@ -1,7 +1,8 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
-vim.o.winbar = " %{%v:lua.vim.fn.expand('%:~:.')%}  %{%v:lua.require'nvim-navic'.get_location()%}"
+vim.o.winbar = " %{%v:lua.vim.fn.expand('%:~:.')%}"
+-- %{%v:lua.require'nvim-navic'.get_location()%}"
 vim.o.relativenumber = false
 vim.o.wrap = true
 vim.opt.wrap = true
