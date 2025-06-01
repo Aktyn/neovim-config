@@ -86,6 +86,41 @@ vim.keymap.set("i", "<C-u>", "<Esc><C-r>a", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-Del>", "<Esc>dwi", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
 
+-- Find in current buffer
+vim.keymap.set({ "n", "i" }, "<C-f>", function()
+  require("telescope.builtin").current_buffer_fuzzy_find()
+end, { desc = "Find in current buffer" })
+
+vim.keymap.set("v", "<C-f>", function()
+  vim.cmd('normal! "vy')
+  local selection = vim.fn.getreg("v")
+  selection = selection:gsub("\n", " ")
+  if selection ~= "" then
+    require("telescope.builtin").current_buffer_fuzzy_find({
+      default_text = selection,
+    })
+  else
+    require("telescope.builtin").current_buffer_fuzzy_find()
+  end
+end, { noremap = true, silent = true, desc = "Telescope search for selected text in current buffer" })
+
+vim.keymap.set("n", "<C-S-f>", function()
+  require("telescope.builtin").live_grep()
+end, { desc = "Search in workspace" })
+
+vim.keymap.set("v", "<C-S-f>", function()
+  vim.cmd('normal! "vy')
+  local selection = vim.fn.getreg("v")
+  selection = selection:gsub("\n", " ")
+  if selection ~= "" then
+    require("telescope.builtin").live_grep({
+      default_text = selection,
+    })
+  else
+    require("telescope.builtin").live_grep()
+  end
+end, { noremap = true, silent = true, desc = "Telescope search for selected text in workspace" })
+
 -- Close current buffer
 vim.keymap.set("n", "<C-w>", function()
   require("mini.bufremove").delete(0, false)
@@ -143,3 +178,35 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<F11>", function()
   vim.cmd("Telescope lsp_references")
 end, { noremap = true, silent = true })
+
+-- package-info keymaps
+vim.keymap.set(
+  "n",
+  "<leader>cpt",
+  "<cmd>lua require('package-info').toggle()<cr>",
+  { silent = true, noremap = true, desc = "Toggle" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpd",
+  "<cmd>lua require('package-info').delete()<cr>",
+  { silent = true, noremap = true, desc = "Delete package" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpu",
+  "<cmd>lua require('package-info').update()<cr>",
+  { silent = true, noremap = true, desc = "Update package" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpi",
+  "<cmd>lua require('package-info').install()<cr>",
+  { silent = true, noremap = true, desc = "Install package" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpc",
+  "<cmd>lua require('package-info').change_version()<cr>",
+  { silent = true, noremap = true, desc = "Change package version" }
+)
