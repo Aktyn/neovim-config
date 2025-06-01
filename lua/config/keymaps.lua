@@ -36,6 +36,12 @@ vim.keymap.set("v", "<C-S-Down>", ":move '>+1<CR>gv=gv", { noremap = true, silen
 vim.keymap.set("i", "<C-S-Up>", "<Esc>:move .-2<CR>==gi", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-S-Down>", "<Esc>:move .+1<CR>==gi", { noremap = true, silent = true })
 
+-- Select previous/next word
+vim.keymap.set("n", "<C-S-Left>", "vB", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-S-Right>", "ve", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-S-Left>", "B", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-S-Right>", "e", { noremap = true, silent = true })
+
 -- Select all
 vim.keymap.set({ "n", "v" }, "<C-a>", "ggVG", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-a>", "<Esc>ggVG", { noremap = true, silent = true })
@@ -112,5 +118,6 @@ vim.keymap.set("n", "<F12>", function(arg)
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<F11>", function()
-  vim.lsp.buf.references({ includeDeclaration = false })
+  -- vim.lsp.buf.references({ includeDeclaration = false })
+  vim.cmd("Telescope lsp_references")
 end, { noremap = true, silent = true })
