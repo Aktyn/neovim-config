@@ -1,7 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.ai.copilot",
-    "lazyvim.plugins.extras.ai.copilot-chat",
     "lazyvim.plugins.extras.editor.navic",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.git",
@@ -14,7 +12,8 @@
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.ui.mini-animate",
-    "lazyvim.plugins.extras.ui.smear-cursor"
+    "lazyvim.plugins.extras.util.dot",
+    "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "install_version": 8,
   "news": {

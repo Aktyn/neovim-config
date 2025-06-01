@@ -2,6 +2,19 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
 vim.o.winbar = " %{%v:lua.vim.fn.expand('%:~:.')%}  %{%v:lua.require'nvim-navic'.get_location()%}"
+vim.o.relativenumber = false
+vim.o.wrap = true
+vim.opt.wrap = true
+vim.opt.nu = true
+vim.opt.tabstop = 2
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.termguicolors = true
+--vim.opt.colorcolumn = "120" -- for line length warnings
+vim.opt.updatetime = 50
+
+vim.g.root_spec = { "cwd" }
 
 ---- NEOVIDE OPTIONS ----
 --vim.o.guifont = "JetBrains Mono:h12"
@@ -11,9 +24,9 @@ vim.g.neovide_scale_factor = 1.0
 -- vim.g.neovide_refresh_rate = 60 -- it is synchronized with display refresh rate by default
 vim.g.neovide_remember_window_size = true
 vim.g.neovide_profiler = false
---vim.g.neovide_cursor_animation_length = 0.150
 --vim.g.neovide_cursor_animation_length = 0.1
 --vim.g.neovide_cursor_short_animation_length = 0.1
+--vim.g.neovide_cursor_animation_length = 0.150
 vim.g.neovide_cursor_trail_size = 0
 vim.g.neovide_cursor_smooth_blink = true
 vim.o.guicursor =
