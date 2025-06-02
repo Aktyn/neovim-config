@@ -5,7 +5,7 @@ vim.o.winbar = " %{%v:lua.vim.fn.expand('%:~:.')%}"
 -- %{%v:lua.require'nvim-navic'.get_location()%}"
 vim.o.relativenumber = false
 vim.o.wrap = true
-vim.opt.wrap = true
+-- vim.opt.wrap = true
 vim.opt.nu = true
 vim.opt.tabstop = 2
 vim.opt.undofile = true

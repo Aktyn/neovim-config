@@ -12,6 +12,8 @@ return {
         },
         hide_up_to_date = true,
       })
+
+      require("telescope").load_extension("package_info")
     end,
   },
 }
