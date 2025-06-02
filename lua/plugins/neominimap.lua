@@ -51,6 +51,13 @@ return {
         enabled = true, -- Enable click events
         auto_switch_focus = true, -- Automatically switch focus to the minimap on click
       },
+
+      delay = 64,
+
+      layout = "split", -- "float", "split"
+      split = {
+        direction = "right",
+      },
     }
   end,
 }

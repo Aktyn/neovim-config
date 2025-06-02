@@ -44,6 +44,8 @@ vim.api.nvim_create_augroup("neotree", { clear = true })
 vim.api.nvim_create_autocmd("VimEnter", {
   group = "neotree",
   callback = function()
-    vim.cmd("Neotree reveal buffers") --git_status
+    vim.defer_fn(function()
+      vim.cmd("Neotree reveal buffers") --git_status
+    end, 500)
   end,
 })
