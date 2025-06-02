@@ -83,7 +83,7 @@ vim.keymap.set("i", "<C-z>", "<C-o>u", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-u>", "<Esc><C-r>a", { noremap = true, silent = true })
 
 -- Ctrl+Delete: delete word ahead; Ctrl+Backspace: delete word behind in insert mode
-vim.keymap.set("i", "<C-Del>", "<Esc>dwi", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-Del>", "<Esc>ldei", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
 
 -- Find in current buffer
@@ -210,3 +210,6 @@ vim.keymap.set(
   "<cmd>lua require('package-info').change_version()<cr>",
   { silent = true, noremap = true, desc = "Change package version" }
 )
+
+-- Linting
+vim.keymap.set("n", "<C-S-l>", ":EslintFixAll<cr>", { silent = true, noremap = true, desc = "Fix all ESLint issues" })
