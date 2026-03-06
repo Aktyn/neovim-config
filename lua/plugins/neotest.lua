@@ -6,6 +6,7 @@ return {
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     "marilari88/neotest-vitest",
+    "arthur944/neotest-bun",
   },
   opts = {
     adapters = {
@@ -14,6 +15,7 @@ return {
           return name ~= "node_modules"
         end,
       },
+      ["neotest-bun"] = {},
     },
 
     status = { virtual_text = true },
