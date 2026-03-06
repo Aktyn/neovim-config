@@ -19,7 +19,9 @@ vim.g.root_spec = { "cwd" }
 
 ---- NEOVIDE OPTIONS ----
 --vim.o.guifont = "JetBrains Mono:h12"
-vim.o.guifont = "JetBrainsMono Nerd Font Propo:h12"
+-- vim.o.guifont = "JetBrainsMono Nerd Font Propo:h12"
+vim.o.guifont =
+  "Monaspace Neon Frozen:h12"
 vim.g.neovide_scale_factor = 1.0
 --vim.g.neovide_padding_bottom = 0
 -- vim.g.neovide_refresh_rate = 60 -- it is synchronized with display refresh rate by default
