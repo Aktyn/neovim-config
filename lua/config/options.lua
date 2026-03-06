@@ -32,5 +32,8 @@ vim.g.neovide_cursor_trail_size = 0
 vim.g.neovide_cursor_smooth_blink = true
 vim.o.guicursor =
   "n-v-c-sm:block-blinkon700-blinkoff700-blinkwait1000-TermCursor,i-ci-ve:ver25-blinkon700-blinkoff700-blinkwait1000,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
---vim.g.neovide_cursor_vfx_mode = "torpedo"
+-- vim.g.neovide_cursor_vfx_mode = "torpedo"
 vim.g.neovide_cursor_vfx_mode = { "", "" }
+
+vim.g.neovide_normal_opacity = 0.85
+vim.g.neovide_normal_opacity = 0.85

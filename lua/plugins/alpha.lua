@@ -17,15 +17,14 @@ return {
     dashboard.section.header.val = vim.split(logo, "\n")
 
 
-    -- stylua: ignore
+
     dashboard.section.buttons.val = {
       dashboard.button("f", " " .. " Find file",       "<cmd> lua LazyVim.pick()() <cr>"),
       dashboard.button("n", " " .. " New file",        [[<cmd> ene <BAR> startinsert <cr>]]),
       dashboard.button("r", " " .. " Recent files",    [[<cmd> lua LazyVim.pick("oldfiles")() <cr>]]),
       dashboard.button("g", " " .. " Find text",       [[<cmd> lua LazyVim.pick("live_grep")() <cr>]]),
       dashboard.button("c", " " .. " Config",          "<cmd> lua LazyVim.pick.config_files()() <cr>"),
-      -- dashboard.button("s", " " .. " Sessions",        [[<cmd> lua require("persistence").select() <cr>]]),
-      dashboard.button("s", " " .. " Sessions",        "<cmd> NeovimProjectHistory <cr>"),
+      dashboard.button("s", " " .. " Sessions",        [[<cmd> lua require("persistence").load() <cr>]]),
       dashboard.button("x", " " .. " Lazy Extras",     "<cmd> LazyExtras <cr>"),
       dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
       dashboard.button("q", " " .. " Quit",            "<cmd> qa <cr>"),
@@ -41,7 +40,7 @@ return {
     return dashboard
   end,
   config = function(_, dashboard)
-    -- close Lazy and re-open when the dashboard is ready
+
     if vim.o.filetype == "lazy" then
       vim.cmd.close()
       vim.api.nvim_create_autocmd("User", {

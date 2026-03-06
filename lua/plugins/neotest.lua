@@ -15,13 +15,7 @@ return {
         end,
       },
     },
-    -- Example for loading neotest-golang with a custom config
-    -- adapters = {
-    --   ["neotest-golang"] = {
-    --     go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
-    --     dap_go_enabled = true,
-    --   },
-    -- },
+
     status = { virtual_text = true },
     output = { open_on_run = true },
     quickfix = {
@@ -29,7 +23,7 @@ return {
         if LazyVim.has("trouble.nvim") then
           require("trouble").open({ mode = "quickfix", focus = false })
         else
-          vim.cmd("copen")
+          vim.cmd.copen()
         end
       end,
     },
@@ -39,7 +33,7 @@ return {
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
-          -- Replace newline and tab characters with space for more compact diagnostics
+
           local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
           return message
         end,
@@ -48,8 +42,8 @@ return {
 
     if LazyVim.has("trouble.nvim") then
       opts.consumers = opts.consumers or {}
-      -- Refresh and auto close trouble after running tests
-      ---@type neotest.Consumer
+
+
       opts.consumers.trouble = function(client)
         client.listeners.results = function(adapter_id, results, partial)
           if partial then
@@ -108,7 +102,7 @@ return {
 
     require("neotest").setup(opts)
   end,
-  -- stylua: ignore
+
   keys = {
     {"<leader>t", "", desc = "+test"},
     { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File (Neotest)" },
@@ -123,24 +117,3 @@ return {
   },
 }
 
--- Old setup. Something is wrong with it.
--- return {
---   "nvim-neotest/neotest",
---   dependencies = {
---     "nvim-neotest/nvim-nio",
---     "nvim-lua/plenary.nvim",
---     "antoinemadec/FixCursorHold.nvim",
---     "nvim-treesitter/nvim-treesitter",
---     "marilari88/neotest-vitest",
---   },
---   opts = {
---     adapters = {
---       "neotest-vitest",
---       opts = {
---         filter_dir = function(name)
---           return name ~= "node_modules"
---         end,
---       },
---     },
---   },
--- }

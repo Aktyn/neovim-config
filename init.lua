@@ -1,4 +1,3 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
 vim.api.nvim_create_augroup("remember_folds", { clear = true })
@@ -9,7 +8,7 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
   callback = function()
     -- Only for normal files
     if vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
-      vim.cmd("mkview")
+      vim.cmd.mkview()
     end
   end,
 })
@@ -19,16 +18,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   callback = function()
     if vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
-      vim.cmd("silent! loadview")
+      pcall(vim.cmd.loadview)
     end
-  end,
-})
-
-vim.api.nvim_create_augroup("open_snacks", { clear = true })
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = "open_snacks",
-  callback = function()
-    vim.cmd("lua Snacks.picker.explorer()")
   end,
 })
 
@@ -40,12 +31,13 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_augroup("neotree", { clear = true })
+-- Explicitly set colorscheme on VimEnter to ensure overrides take effect
 vim.api.nvim_create_autocmd("VimEnter", {
-  group = "neotree",
+  group = vim.api.nvim_create_augroup("SetColorscheme", { clear = true }),
   callback = function()
-    vim.defer_fn(function()
-      vim.cmd("Neotree reveal buffers") --git_status
-    end, 500)
+    vim.cmd.colorscheme("catppuccin")
   end,
 })
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

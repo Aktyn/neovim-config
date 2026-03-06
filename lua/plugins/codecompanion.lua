@@ -1,10 +1,9 @@
----@diagnostic disable-next-line: unused-local
 local function generate_slash_commands()
   local commands = {}
   for _, command in ipairs({ "buffer", "file", "help", "symbols" }) do
     commands[command] = {
       opts = {
-        provider = LazyVim.pick.picker.name, -- dynamically resolve the provider
+        provider = LazyVim.pick.picker.name,
       },
     }
   end
@@ -23,7 +22,7 @@ return {
       display = {
         chat = {
           intro_message = "Welcome to CodeCompanion ✨! Press ? for options",
-          show_header_separator = false, -- Show header separators in the chat buffer? Set this to false if you're using an external markdown formatting plugin
+          show_header_separator = false,
           auto_scroll = false,
         },
       },
@@ -103,36 +102,12 @@ return {
     },
   },
   {
-    "echasnovski/mini.diff",
+    "nvim-mini/mini.diff",
     config = function()
       local diff = require("mini.diff")
       diff.setup({
         source = diff.gen_source.none(),
       })
     end,
-  },
-  {
-    "saghen/blink.cmp",
-    dependencies = { "olimorris/codecompanion.nvim", "saghen/blink.compat" },
-    event = "InsertEnter",
-    opts = {
-      enabled = function()
-        return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
-      end,
-      completion = {
-        accept = {
-          auto_brackets = {
-            kind_resolution = {
-              blocked_filetypes = { "typescriptreact", "javascriptreact", "vue", "codecompanion" },
-            },
-          },
-        },
-      },
-      sources = {
-        per_filetype = {
-          codecompanion = { "codecompanion" },
-        },
-      },
-    },
   },
 }
