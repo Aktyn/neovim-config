@@ -35,7 +35,7 @@ vim.keymap.set("x", "<C-g>", '<ESC><CMD>lua require("Comment.api").locked("toggl
 -- vim.keymap.del("", "/")
 -- vim.keymap.set("n", "/", "<Nop>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<C-s>", ":w<CR>") -- Save
+vim.keymap.set("n", "<C-s>", ":wa<CR>") -- Save
 vim.keymap.set("v", "<C-c>", '"+y') -- Copy
 vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
 vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
