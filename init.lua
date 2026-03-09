@@ -41,3 +41,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+vim.diagnostic.config({ update_in_insert = true })

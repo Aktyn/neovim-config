@@ -212,4 +212,4 @@ vim.keymap.set(
 )
 
 -- Linting
-vim.keymap.set("n", "<C-S-l>", ":EslintFixAll<cr>", { silent = true, noremap = true, desc = "Fix all ESLint issues" })
+vim.keymap.set("n", "<C-l>", ":LspEslintFixAll<cr>", { silent = true, noremap = true, desc = "Fix all ESLint issues" })
