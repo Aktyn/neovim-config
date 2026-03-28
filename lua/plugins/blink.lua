@@ -25,7 +25,7 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "copilot" },
         per_filetype = {
-          codecompanion = { "codecompanion" },
+          -- codecompanion = { "codecompanion" },
           lua = { "lsp", "path", "snippets", "buffer", "lazydev" },
         },
         providers = {
@@ -44,11 +44,11 @@ return {
               return items
             end,
           },
-          codecompanion = {
-            name = "CodeCompanion",
-            module = "codecompanion.providers.completion.blink",
-            enabled = true,
-          },
+          -- codecompanion = {
+          --   name = "CodeCompanion",
+          --   module = "codecompanion.providers.completion.blink",
+          --   enabled = true,
+          -- },
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
@@ -60,7 +60,12 @@ return {
         accept = {
           auto_brackets = {
             kind_resolution = {
-              blocked_filetypes = { "typescriptreact", "javascriptreact", "vue", "codecompanion" },
+              blocked_filetypes = {
+                "typescriptreact",
+                "javascriptreact",
+                "vue",
+                -- "codecompanion"
+              },
             },
           },
         },

@@ -5,6 +5,9 @@ return {
   config = function()
     require("gemini").setup({
       cmds = { "gemini" },
+      win = {
+        preset = "right-fixed",
+      },
     })
   end,
   keys = {

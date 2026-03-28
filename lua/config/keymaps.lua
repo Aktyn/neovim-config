@@ -6,6 +6,10 @@ vim.keymap.del("", "<C-_>")
 vim.keymap.set("n", "<C-g>", function()
   require("Comment.api").toggle.linewise.current()
 end, { noremap = true, silent = true })
+vim.keymap.set("i", "<C-g>", function()
+  require("Comment.api").toggle.linewise.current()
+end, { noremap = true, silent = true })
+vim.keymap.set("x", "<C-g>", '<ESC><CMD>lua require("Comment.api").locked("toggle.linewise")(vim.fn.visualmode())<CR>')
 
 -- Session management
 vim.keymap.del("n", "<leader>qd")
@@ -31,11 +35,13 @@ vim.keymap.set(
   { desc = "Discover sessions", noremap = true, silent = true }
 )
 
-vim.keymap.set("x", "<C-g>", '<ESC><CMD>lua require("Comment.api").locked("toggle.linewise")(vim.fn.visualmode())<CR>')
--- vim.keymap.del("", "/")
--- vim.keymap.set("n", "/", "<Nop>", { noremap = true, silent = true })
+-- vim.keymap.del("", "<C-Up>")
+-- vim.keymap.del("", "<C-Down>")
+vim.keymap.del("", "<C-Left>")
+vim.keymap.del("", "<C-Right>")
 
 vim.keymap.set("n", "<C-s>", ":wa<CR>") -- Save
+vim.keymap.set("i", "<C-s>", "<C-o>:wa<CR>", { noremap = true, desc = "Save all in insert mode" })
 vim.keymap.set("v", "<C-c>", '"+y') -- Copy
 vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
 vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
@@ -61,8 +67,8 @@ vim.keymap.set("i", "<C-S-Up>", "<Esc>:move .-2<CR>==gi", { noremap = true, sile
 vim.keymap.set("i", "<C-S-Down>", "<Esc>:move .+1<CR>==gi", { noremap = true, silent = true })
 
 -- Select previous/next word
-vim.keymap.set("n", "<C-S-Left>", "vB", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-S-Right>", "ve", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-S-Left>", "vB", { noremap = true, silent = true })
 vim.keymap.set("v", "<C-S-Left>", "B", { noremap = true, silent = true })
 vim.keymap.set("v", "<C-S-Right>", "e", { noremap = true, silent = true })
 

@@ -4,6 +4,14 @@ return {
   lazy = false, -- The server is already lazy loaded
   build = "cd server && go build",
   config = function()
+    -- Shim cmp.setup if it's a table (e.g., when using blink.compat) to avoid a crash
+    local ok_cmp, cmp = pcall(require, "cmp")
+    if ok_cmp and type(cmp.setup) == "table" and not getmetatable(cmp.setup) then
+      setmetatable(cmp.setup, {
+        __call = function() end,
+      })
+    end
+
     require("cursortab").setup({
       enabled = false,
       log_level = "trace",
