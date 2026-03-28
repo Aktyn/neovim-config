@@ -35,8 +35,6 @@ vim.keymap.set(
   { desc = "Discover sessions", noremap = true, silent = true }
 )
 
--- vim.keymap.del("", "<C-Up>")
--- vim.keymap.del("", "<C-Down>")
 vim.keymap.del("", "<C-Left>")
 vim.keymap.del("", "<C-Right>")
 
@@ -68,9 +66,9 @@ vim.keymap.set("i", "<C-S-Down>", "<Esc>:move .+1<CR>==gi", { noremap = true, si
 
 -- Select previous/next word
 vim.keymap.set("n", "<C-S-Right>", "ve", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-S-Right>", "e", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-S-Left>", "vB", { noremap = true, silent = true })
 vim.keymap.set("v", "<C-S-Left>", "B", { noremap = true, silent = true })
-vim.keymap.set("v", "<C-S-Right>", "e", { noremap = true, silent = true })
 
 -- Select all
 vim.keymap.set({ "n", "v" }, "<C-a>", "ggVG", { noremap = true, silent = true })

@@ -17,6 +17,13 @@ vim.opt.updatetime = 50
 
 vim.g.root_spec = { "cwd" }
 
+vim.opt.rtp:append(vim.fn.stdpath("data") .. "/site")
+
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 ---- NEOVIDE OPTIONS ----
 --vim.o.guifont = "JetBrains Mono:h12"
 -- vim.o.guifont = "JetBrainsMono Nerd Font Propo:h12"
