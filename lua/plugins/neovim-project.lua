@@ -16,7 +16,6 @@ return {
   end,
   dependencies = {
     -- { "nvim-lua/plenary.nvim" },
-    -- optional picker
     { "nvim-telescope/telescope.nvim" },
     -- { "ibhagwan/fzf-lua" },
     -- { "folke/snacks.nvim" },

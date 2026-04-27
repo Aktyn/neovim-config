@@ -12,7 +12,6 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
-map("v", "<leader>s", [[y*:%s///gc<CR>]], { desc = "Replace selection in buffer" })
 
 map("n", "<C-s>", ":wa<CR>") -- Save
 map("i", "<C-s>", "<C-o>:wa<CR>", { noremap = true, desc = "Save all in insert mode" })
