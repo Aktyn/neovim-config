@@ -5,7 +5,7 @@ return {
     priority = 1000,
     opts = {},
     config = function()
-      require("tiny-inline-diagnostic").setup {
+      require("tiny-inline-diagnostic").setup({
 
         options = {
           enable_on_insert = true, -- important
@@ -18,7 +18,7 @@ return {
             enabled = true,
           },
         },
-      }
+      })
     end,
   },
   {

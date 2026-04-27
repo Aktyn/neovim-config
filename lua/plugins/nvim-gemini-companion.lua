@@ -3,12 +3,12 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "VeryLazy",
   config = function()
-    require("gemini").setup {
+    require("gemini").setup({
       cmds = { "gemini" },
       win = {
         preset = "right-fixed",
       },
-    }
+    })
   end,
   keys = {
     { "<leader>ag", "<cmd>GeminiToggle<cr>", desc = "Toggle Gemini sidebar" },
