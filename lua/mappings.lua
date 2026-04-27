@@ -40,6 +40,38 @@ map("i", "<C-S-Down>", "<Esc>:move .+1<CR>==gi", { noremap = true, silent = true
 map("n", "<C-S-l>", ":LspEslintFixAll<cr>", { silent = true, noremap = true, desc = "Fix all ESLint issues" })
 -- map("n", "<C-l>", "???", { desc = "Format document" })
 
+-- package-info keymaps
+vim.keymap.set(
+  "n",
+  "<leader>cpt",
+  "<cmd>lua require('package-info').toggle()<cr>",
+  { silent = true, noremap = true, desc = "Toggle" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpd",
+  "<cmd>lua require('package-info').delete()<cr>",
+  { silent = true, noremap = true, desc = "Delete package" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpu",
+  "<cmd>lua require('package-info').update()<cr>",
+  { silent = true, noremap = true, desc = "Update package" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpi",
+  "<cmd>lua require('package-info').install()<cr>",
+  { silent = true, noremap = true, desc = "Install package" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>cpc",
+  "<cmd>lua require('package-info').change_version()<cr>",
+  { silent = true, noremap = true, desc = "Change package version" }
+)
+
 --- Project management
 map(
   "n",
