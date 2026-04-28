@@ -1,6 +1,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls" }
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+local servers = { "html", "cssls", "tailwindcss", "ts_ls", "eslint", "jsonls", "yamlls", "postgres_lsp", "bashls" }
 vim.lsp.enable(servers)
 
 -- read :h vim.lsp.config for changing options of lsp servers

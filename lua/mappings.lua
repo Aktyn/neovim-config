@@ -7,10 +7,14 @@ local nomap = vim.keymap.del
 
 nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
+nomap("n", "<leader>b")
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", ":", "<Plug>(cmdpalette)")
 map("i", "jk", "<ESC>")
+
+map("n", "<leader><leader>", ":Telescope find_files hidden=false<cr>", { desc = "Find files within open project" })
+map("n", "<leader>bb", ":buffer #<cr>", { desc = "Select previous buffer" })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
