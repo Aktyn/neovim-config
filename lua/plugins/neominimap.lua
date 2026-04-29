@@ -3,7 +3,8 @@ return {
   "Isrothy/neominimap.nvim",
   version = "v3.x.x",
   priority = 100, -- Set a higher priority to load before neo-tree
-  lazy = true,
+  -- lazy = true,
+  event = "VeryLazy",
   keys = {},
   click = {
     enable = true,

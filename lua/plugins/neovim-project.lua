@@ -1,6 +1,8 @@
 -- Projects manager
 return {
   "coffebar/neovim-project",
+  lazy = false,
+  priority = 100,
   opts = {
     projects = { -- define project roots
       "~/Programming/*",
@@ -18,9 +20,7 @@ return {
     -- { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope.nvim" },
     -- { "ibhagwan/fzf-lua" },
-    -- { "folke/snacks.nvim" },
+    { "folke/snacks.nvim" },
     { "Shatur/neovim-session-manager" },
   },
-  lazy = false,
-  priority = 100,
 }

@@ -10,12 +10,17 @@ nomap("n", "<leader>gt")
 nomap("n", "<leader>b")
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("n", ":", "<Plug>(cmdpalette)")
+-- map("n", ":", "<Plug>(cmdpalette)")
+-- map("n", ":", "<cmd>lua require('snacks').input.input({}, function() end)<CR>")
 map("i", "jk", "<ESC>")
+map("n", "<leader>gb", function()
+  require("snacks").gitbrowse()
+end, { desc = "Git Browse" })
 
 map("n", "<leader><leader>", ":Telescope find_files hidden=false<cr>", { desc = "Find files within open project" })
 map("n", "<leader>bb", ":buffer #<cr>", { desc = "Select previous buffer" })
-
+-- map("i", "<C-v>", '<ESC>l"+Pli') -- Paste insert mode
+map("i", "<C-v>", "<ESC>pa") -- Paste insert mode
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 map("n", "<C-s>", ":wa<CR>") -- Save
@@ -45,31 +50,31 @@ map("n", "<C-S-l>", ":LspEslintFixAll<cr>", { silent = true, noremap = true, des
 -- map("n", "<C-l>", "???", { desc = "Format document" })
 
 -- package-info keymaps
-vim.keymap.set(
+map(
   "n",
   "<leader>cpt",
   "<cmd>lua require('package-info').toggle()<cr>",
   { silent = true, noremap = true, desc = "Toggle" }
 )
-vim.keymap.set(
+map(
   "n",
   "<leader>cpd",
   "<cmd>lua require('package-info').delete()<cr>",
   { silent = true, noremap = true, desc = "Delete package" }
 )
-vim.keymap.set(
+map(
   "n",
   "<leader>cpu",
   "<cmd>lua require('package-info').update()<cr>",
   { silent = true, noremap = true, desc = "Update package" }
 )
-vim.keymap.set(
+map(
   "n",
   "<leader>cpi",
   "<cmd>lua require('package-info').install()<cr>",
   { silent = true, noremap = true, desc = "Install package" }
 )
-vim.keymap.set(
+map(
   "n",
   "<leader>cpc",
   "<cmd>lua require('package-info').change_version()<cr>",
@@ -85,13 +90,67 @@ map(
 )
 map("n", "<leader>qd", "<cmd>NeovimProjectDiscover<cr>", { desc = "Discover sessions", noremap = true, silent = true })
 
+--- Better definitions jumping
+-- Go to definition
+map("n", "<F12>", function(arg)
+  local params = vim.lsp.util.make_position_params(0, "utf-8")
+  vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result, _, _)
+    local function location_equal(loc)
+      -- Support both Location and LocationLink
+      local uri
+      local range
+      if loc.uri then
+        uri = loc.uri
+        range = loc.range
+      elseif loc.targetUri then
+        uri = loc.targetUri
+        range = loc.targetRange
+      end
+      if not uri or not range then
+        return false
+      end
+      -- Compare with current buffer/position
+      local bufnr = vim.api.nvim_get_current_buf()
+      local curr_uri = vim.uri_from_bufnr(bufnr)
+      local curr_row, curr_col = unpack(vim.api.nvim_win_get_cursor(0))
+      -- LSP is zero-based, Neovim is one-based
+      if
+        uri == curr_uri
+        and curr_row - 1 >= range.start.line
+        and curr_row - 1 <= range["end"].line
+        and curr_col >= range.start.character
+        and curr_col <= range["end"].character
+      then
+        return true
+      end
+      return false
+    end
+
+    local found = false
+    if result and not vim.tbl_isempty(result) then
+      local first = result[1] or result
+      if not location_equal(first) then
+        found = true
+        vim.lsp.buf.definition(arg)
+      end
+    end
+    if not found then
+      vim.cmd("Telescope lsp_references")
+    end
+  end)
+end, { noremap = true, silent = true })
+
+map("n", "<F11>", function()
+  vim.cmd("Telescope lsp_references")
+end, { noremap = true, silent = true })
+
 --- Advanced search
 -- Find in current buffer
-vim.keymap.set({ "n", "i" }, "<C-f>", function()
+map({ "n", "i" }, "<C-f>", function()
   require("telescope.builtin").current_buffer_fuzzy_find()
 end, { desc = "Find in current buffer" })
 
-vim.keymap.set("v", "<C-f>", function()
+map("v", "<C-f>", function()
   vim.cmd('normal! "vy')
   local selection = vim.fn.getreg("v")
   selection = selection:gsub("\n", " ")
@@ -104,11 +163,11 @@ vim.keymap.set("v", "<C-f>", function()
   end
 end, { noremap = true, silent = true, desc = "Telescope search for selected text in current buffer" })
 
-vim.keymap.set("n", "<C-S-f>", function()
+map("n", "<C-S-f>", function()
   require("telescope.builtin").live_grep()
 end, { desc = "Search in workspace" })
 
-vim.keymap.set("v", "<C-S-f>", function()
+map("v", "<C-S-f>", function()
   vim.cmd('normal! "vy')
   local selection = vim.fn.getreg("v")
   selection = selection:gsub("\n", " ")
