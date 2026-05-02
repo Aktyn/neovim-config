@@ -11,49 +11,55 @@ return {
     auto_switch_focus = true,
   },
   init = function()
-    -- The following options are recommended when layout == "float"
-    vim.opt.wrap = false
-    vim.opt.sidescrolloff = 36 -- Set a large value
+    -- vim.api.nvim_buf_is_valid(0) -- Experimental bugfix
+    local bufnr = vim.api.nvim_get_current_buf()
+    local state = vim.b[bufnr].nes_state
 
-    --- Put your configuration here
-    ---@type Neominimap.UserConfig
-    vim.g.neominimap = {
-      auto_enable = true,
+    if state then
+      -- The following options are recommended when layout == "float"
+      vim.opt.wrap = false
+      vim.opt.sidescrolloff = 36 -- Set a large value
 
-      layout = "split",
+      --- Put your configuration here
+      ---@type Neominimap.UserConfig
+      vim.g.neominimap = {
+        auto_enable = true,
 
-      -- How many columns a dot should span
-      x_multiplier = 4,
+        layout = "split",
 
-      -- How many rows a dot should span
-      y_multiplier = 1, -- Moderately dense
+        -- How many columns a dot should span
+        x_multiplier = 4,
 
-      split = {
-        minimap_width = 30, -- Standard width
-        fix_width = true,
-      },
+        -- How many rows a dot should span
+        y_multiplier = 1, -- Moderately dense
 
-      winopt = function(opt)
-        -- Ensure minimap uses standard Normal highlight for transparency
-        opt.winhighlight = "Normal:Normal,NormalNC:Normal,FloatBorder:Normal"
-      end,
+        split = {
+          minimap_width = 30, -- Standard width
+          fix_width = true,
+        },
 
-      fold = {
-        enabled = true,
-      },
-    }
+        winopt = function(opt)
+          -- Ensure minimap uses standard Normal highlight for transparency
+          opt.winhighlight = "Normal:Normal,NormalNC:Normal,FloatBorder:Normal"
+        end,
 
-    -- Ensure the minimap background is transparent by linking it to Normal
-    vim.api.nvim_set_hl(0, "NeominimapBackground", { link = "Normal" })
+        fold = {
+          enabled = true,
+        },
+      }
 
-    local ok, coord = pcall(require, "neominimap.map.coord")
-    if ok then
-      local old_bitmap_to_code = coord.bitmap_to_code
-      coord.bitmap_to_code = function(bitmap)
-        if bitmap == 0 then
-          return 32 -- ASCII Space
+      -- Ensure the minimap background is transparent by linking it to Normal
+      vim.api.nvim_set_hl(0, "NeominimapBackground", { link = "Normal" })
+
+      local ok, coord = pcall(require, "neominimap.map.coord")
+      if ok then
+        local old_bitmap_to_code = coord.bitmap_to_code
+        coord.bitmap_to_code = function(bitmap)
+          if bitmap == 0 then
+            return 32 -- ASCII Space
+          end
+          return old_bitmap_to_code(bitmap)
         end
-        return old_bitmap_to_code(bitmap)
       end
     end
   end,

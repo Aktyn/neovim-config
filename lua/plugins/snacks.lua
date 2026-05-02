@@ -5,8 +5,10 @@ return {
   ---@type snacks.Config
   opts = {
     input = { enabled = true },
+    picker = { enabled = true },
     indent = { enabled = true },
     notifier = { enabled = true },
+    quickfile = { enabled = true },
     image = { enabled = true },
     statuscolumn = { enabled = true },
     animate = { enabled = true },
