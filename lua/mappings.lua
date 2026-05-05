@@ -179,3 +179,12 @@ map("v", "<C-S-f>", function()
     require("telescope.builtin").live_grep()
   end
 end, { noremap = true, silent = true, desc = "Telescope search for selected text in workspace" })
+
+-- Reorder buffers
+map({ "n" }, "<C-M-Right>", function()
+require("nvchad.tabufline").move_buf(1)
+end, { desc = "move buffer to the right" })
+
+map({ "n" }, "<C-M-Left>", function()
+require("nvchad.tabufline").move_buf(-1)
+end, { desc = "move buffer to the left" })
