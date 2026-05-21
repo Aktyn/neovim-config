@@ -96,4 +96,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "<CR>", function()
+      -- Execute the default enter action (jump to location)
+      vim.cmd("normal! <CR>")
 
+      -- Close the location list window
+      local win = vim.api.nvim_get_current_win()
+      if vim.api.nvim_win_is_valid(win) then
+        vim.api.nvim_win_close(win, true)
+      end
+    end, { buffer = true })
+  end,
+})

@@ -9,6 +9,17 @@ nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
 nomap("n", "<leader>b")
 
+-- Window navigation
+map("n", "<C-Left>", "<C-w>h", { desc = "Window left" })
+map("n", "<C-Down>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-Up>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-Right>", "<C-w>l", { desc = "Window right" })
+
+nomap("n", "<C-h>")
+nomap("n", "<C-j>")
+nomap("n", "<C-k>")
+nomap("n", "<C-l>")
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("n", ":", "<Plug>(cmdpalette)")
 -- map("n", ":", "<cmd>lua require('snacks').input.input({}, function() end)<CR>")
@@ -182,9 +193,18 @@ end, { noremap = true, silent = true, desc = "Telescope search for selected text
 
 -- Reorder buffers
 map({ "n" }, "<C-M-Right>", function()
-require("nvchad.tabufline").move_buf(1)
+  require("nvchad.tabufline").move_buf(1)
 end, { desc = "move buffer to the right" })
 
 map({ "n" }, "<C-M-Left>", function()
-require("nvchad.tabufline").move_buf(-1)
+  require("nvchad.tabufline").move_buf(-1)
 end, { desc = "move buffer to the left" })
+
+-- Todo comments
+map(
+  "n",
+  "<leader>ft",
+  "<cmd>TodoTelescope keywords=TODO,FIX<cr>",
+  { desc = "Discover TODOs", noremap = true, silent = true }
+)
+map("n", "<leader>tt", "<cmd>TodoLocList<cr>", { desc = "Localize TODOs", noremap = true, silent = true })

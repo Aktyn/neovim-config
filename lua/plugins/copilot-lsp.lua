@@ -25,12 +25,5 @@ return {
       -- Resolving the terminal's inability to distinguish between `TAB` and `<C-i>` in normal mode
       return vim.api.nvim_replace_termcodes("<C-i>", true, true, true)
     end, { desc = "Accept Copilot NES", expr = true, silent = true })
-
-    vim.keymap.set("i", "<CR>", function()
-      if accept_nes() then
-        return ""
-      end
-      return vim.api.nvim_replace_termcodes("<CR>", true, true, true)
-    end, { desc = "Accept Copilot NES", expr = true, silent = true })
   end,
 }
