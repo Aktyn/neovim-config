@@ -10,15 +10,18 @@ nomap("n", "<leader>gt")
 nomap("n", "<leader>b")
 
 -- Window navigation
-map("n", "<C-Left>", "<C-w>h", { desc = "Window left" })
-map("n", "<C-Down>", "<C-w>j", { desc = "Window down" })
-map("n", "<C-Up>", "<C-w>k", { desc = "Window up" })
-map("n", "<C-Right>", "<C-w>l", { desc = "Window right" })
+map("n", "<C-w>Left", "<C-w>h", { desc = "Window left" })
+map("n", "<C-w>Down", "<C-w>j", { desc = "Window down" })
+map("n", "<C-w>Up", "<C-w>k", { desc = "Window up" })
+map("n", "<C-w>Right", "<C-w>l", { desc = "Window right" })
 
-nomap("n", "<C-h>")
-nomap("n", "<C-j>")
-nomap("n", "<C-k>")
-nomap("n", "<C-l>")
+-- nomap("n", "<C-h>")
+-- nomap("n", "<C-j>")
+-- nomap("n", "<C-k>")
+-- nomap("n", "<C-l>")
+map("n", "<C-l>", function()
+  vim.diagnostic.open_float()
+end, { desc = "Show diagnostics" })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("n", ":", "<Plug>(cmdpalette)")
@@ -36,6 +39,8 @@ map("i", "<C-v>", "<ESC>pa") -- Paste insert mode
 
 map("n", "<C-s>", ":wa<CR>") -- Save
 map("i", "<C-s>", "<C-o>:wa<CR>", { noremap = true, desc = "Save all in insert mode" })
+map("i", "<C-z>", "<C-o>u", { noremap = true, silent = true })
+map("i", "<C-u>", "<Esc><C-r>a", { noremap = true, silent = true })
 
 -- Remove current line or selected lines
 map("n", "<C-S-k>", '"_dd', { noremap = true, silent = true })
@@ -208,3 +213,8 @@ map(
   { desc = "Discover TODOs", noremap = true, silent = true }
 )
 map("n", "<leader>tt", "<cmd>TodoLocList<cr>", { desc = "Localize TODOs", noremap = true, silent = true })
+
+-- Inlay hints
+map("n", "<leader>uh", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), nil)
+end, { desc = "Toggle Inlay Hints" })
