@@ -3,8 +3,8 @@ return {
   "Isrothy/neominimap.nvim",
   version = "v3.x.x",
   priority = 100, -- Set a higher priority to load before neo-tree
-  -- lazy = true,
-  event = "VeryLazy",
+  lazy = false,
+  -- event = "VeryLazy",
   keys = {},
   click = {
     enable = true,
@@ -20,8 +20,6 @@ return {
       vim.opt.wrap = false
       vim.opt.sidescrolloff = 36 -- Set a large value
 
-      --- Put your configuration here
-      ---@type Neominimap.UserConfig
       vim.g.neominimap = {
         auto_enable = true,
 
@@ -35,7 +33,7 @@ return {
 
         split = {
           minimap_width = 30, -- Standard width
-          fix_width = true,
+          fix_width = false,
         },
 
         winopt = function(opt)
@@ -44,7 +42,7 @@ return {
         end,
 
         fold = {
-          enabled = true,
+          enabled = false,
         },
       }
 

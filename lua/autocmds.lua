@@ -111,3 +111,18 @@ vim.api.nvim_create_autocmd("FileType", {
     end, { buffer = true })
   end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd("Neotree buffers show")
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  callback = function()
+    -- Open tree if starting with a directory or no arguments
+    if vim.fn.isdirectory(vim.fn.expand("%:p:h")) == 1 or vim.fn.argc() == 0 then
+      require("nvim-tree.api").tree.open()
+    end
+  end,
+})
