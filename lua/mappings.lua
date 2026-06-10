@@ -38,6 +38,7 @@ map("i", "<C-v>", "<ESC>pa") -- Paste insert mode
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 map("n", "<C-s>", ":wa<CR>") -- Save
+map("n", "<C-a>", "ggVG", { desc = "Select all" })
 map("i", "<C-s>", "<C-o>:wa<CR>", { noremap = true, desc = "Save all in insert mode" })
 map("i", "<C-z>", "<C-o>u", { noremap = true, silent = true })
 map("i", "<C-u>", "<Esc><C-r>a", { noremap = true, silent = true })
@@ -218,3 +219,15 @@ map("n", "<leader>tt", "<cmd>TodoLocList<cr>", { desc = "Localize TODOs", norema
 map("n", "<leader>uh", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), nil)
 end, { desc = "Toggle Inlay Hints" })
+
+-- CursorTab / Buffer navigation conflict resolution
+map("n", "<tab>", function()
+  local has_cursortab, cursortab = pcall(require, "cursortab")
+  local has_cursortab_ui, cursortab_ui = pcall(require, "cursortab.ui")
+
+  if has_cursortab and has_cursortab_ui and (cursortab_ui.has_completion() or cursortab_ui.has_cursor_prediction()) then
+    cursortab.accept()
+  else
+    require("nvchad.tabufline").next()
+  end
+end, { desc = "Accept suggestion or goto next buffer" })

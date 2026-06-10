@@ -42,7 +42,7 @@ return {
         end,
 
         fold = {
-          enabled = false,
+          enabled = true,
         },
       }
 

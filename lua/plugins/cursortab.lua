@@ -14,11 +14,6 @@ return {
         provider = {
           type = "copilot",
         },
-        -- provider = {
-        --   type = "sweep",
-        --   model = "maternion/sweep-next-edit-1.5B",
-        --   url = "localhost:11434"
-        -- },
         behavior = {
           cursor_prediction = {
             enabled = true,

@@ -71,21 +71,30 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local bufnr = args.buf
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    local ft = vim.bo[bufnr].filetype
 
-    -- Skip native inline completion for copilot_ls to avoid interference with copilot.lua and NES
-    if client.name == "copilot_ls" then
+    -- Skip native inline completion for some servers.
+    -- Neovim's inline-completion "agent" can send synthetic didChange ranges (e.g. end.line=2147483647)
+    -- which has been observed to destabilize qmlls.
+    if
+      client.name == "copilot_ls"
+      or client.name == "qmlls"
+      or client.name == "AgentTextDocumentConfiguration"
+      or ft == "qml"
+      or ft == "qmljs"
+    then
       return
     end
 
     if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then
       vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
 
-      vim.keymap.set(
-        "i",
-        "<Right>",
-        vim.lsp.inline_completion.get,
-        { desc = "LSP: accept inline completion", buffer = bufnr }
-      )
+      vim.keymap.set("i", "<Right>", function()
+        if vim.lsp.inline_completion.get() then
+          return ""
+        end
+        return "<Right>"
+      end, { desc = "LSP: accept inline completion", buffer = bufnr, expr = true })
       vim.keymap.set(
         "i",
         "<C-G>",
@@ -100,13 +109,16 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
   callback = function()
     vim.keymap.set("n", "<CR>", function()
-      -- Execute the default enter action (jump to location)
-      vim.cmd("normal! <CR>")
+      local qf_win = vim.api.nvim_get_current_win()
+      local is_loclist = vim.fn.getwininfo(qf_win)[1].loclist == 1
 
-      -- Close the location list window
-      local win = vim.api.nvim_get_current_win()
-      if vim.api.nvim_win_is_valid(win) then
-        vim.api.nvim_win_close(win, true)
+      -- Jump to the location
+      local cmd = is_loclist and ".ll" or ".cc"
+      local ok, _ = pcall(vim.cmd, cmd)
+
+      -- Close the quickfix/location list window if jump was successful
+      if ok and vim.api.nvim_win_is_valid(qf_win) then
+        vim.api.nvim_win_close(qf_win, true)
       end
     end, { buffer = true })
   end,
@@ -115,11 +127,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     vim.cmd("Neotree buffers show")
-    -- end,
-    -- })
 
-    -- vim.api.nvim_create_autocmd({ "VimEnter" }, {
-    -- callback = function()
     -- Open tree if starting with a directory or no arguments
     if vim.fn.isdirectory(vim.fn.expand("%:p:h")) == 1 or vim.fn.argc() == 0 then
       require("nvim-tree.api").tree.open()
