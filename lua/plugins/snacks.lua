@@ -15,5 +15,15 @@ return {
     scroll = { enabled = true },
     words = { enabled = true },
     bigfile = { enabled = true },
+    git = { enabled = true },
+  },
+  keys = {
+    {
+      "gb", -- Your preferred keymap
+      function()
+        Snacks.git.blame_line()
+      end,
+      desc = "Git Blame Line",
+    },
   },
 }
