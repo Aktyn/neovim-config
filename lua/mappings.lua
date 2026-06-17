@@ -7,7 +7,7 @@ local nomap = vim.keymap.del
 
 nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
-nomap("n", "<leader>b")
+-- nomap("n", "<leader>b")
 
 -- Window navigation
 map("n", "<C-w>Left", "<C-w>h", { desc = "Window left" })
@@ -197,14 +197,19 @@ map("v", "<C-S-f>", function()
   end
 end, { noremap = true, silent = true, desc = "Telescope search for selected text in workspace" })
 
--- Reorder buffers
+-- Buffertabs navigation
 map({ "n" }, "<C-M-Right>", function()
-  require("nvchad.tabufline").move_buf(1)
+  require("bufferline").move(1)
 end, { desc = "move buffer to the right" })
-
 map({ "n" }, "<C-M-Left>", function()
-  require("nvchad.tabufline").move_buf(-1)
+  require("bufferline").move(-1)
 end, { desc = "move buffer to the left" })
+
+map({ "n" }, "<S-tab>", function()
+  require("bufferline").cycle(-1)
+end, { desc = "cycle to previous buffer" })
+
+map({ "n" }, "<leader>x",  "<cmd>BufferLineCyclePrev<cr><cmd>bdelete! #<cr>", { desc = "close current buffer" })
 
 -- Todo comments
 map(
@@ -228,6 +233,6 @@ map("n", "<tab>", function()
   if has_cursortab and has_cursortab_ui and (cursortab_ui.has_completion() or cursortab_ui.has_cursor_prediction()) then
     cursortab.accept()
   else
-    require("nvchad.tabufline").next()
+    require("bufferline").cycle(1)
   end
 end, { desc = "Accept suggestion or goto next buffer" })

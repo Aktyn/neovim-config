@@ -11,14 +11,14 @@ return {
         local cursortab_ok, cursortab = pcall(require, "cursortab")
         local copilot_ok, copilot_suggestion = pcall(require, "copilot.suggestion")
 
-        if cursortab_ui_ok and (cursortab_ui.has_completion() or cursortab_ui.has_cursor_prediction()) then
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif cursortab_ui_ok and (cursortab_ui.has_completion() or cursortab_ui.has_cursor_prediction()) then
           if cursortab_ok then
             cursortab.accept()
           end
         elseif copilot_ok and copilot_suggestion.is_visible() then
           copilot_suggestion.accept()
-        elseif cmp.visible() then
-          cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else

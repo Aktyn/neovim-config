@@ -4,6 +4,8 @@ vim.opt.updatetime = 100
 
 vim.g.root_spec = { "cwd" }
 
+vim.opt.termguicolors = true
+vim.o.mousemoveevent = true
 vim.o.cursorlineopt = "both" -- to enable cursorline!
 vim.o.winbar = " %{%v:lua.vim.fn.expand('%:~:.')%}" -- Display relative file path in the window bar
 vim.o.wrap = true -- Enable soft line wrapping
