@@ -12,6 +12,7 @@ return {
         local cursortab_ui_ok, cursortab_ui = pcall(require, "cursortab.ui")
         local cursortab_ok, cursortab = pcall(require, "cursortab")
         local copilot_ok, copilot_suggestion = pcall(require, "copilot.suggestion")
+        local supermaven_suggestion = require("supermaven-nvim.completion_preview")
 
         if cmp.visible() then
           cmp.select_next_item()
@@ -21,6 +22,8 @@ return {
           end
         elseif copilot_ok and copilot_suggestion.is_visible() then
           copilot_suggestion.accept()
+        elseif supermaven_suggestion.has_suggestion() then
+          supermaven_suggestion.on_accept_suggestion()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else

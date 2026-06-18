@@ -181,21 +181,28 @@ map("v", "<C-f>", function()
 end, { noremap = true, silent = true, desc = "Telescope search for selected text in current buffer" })
 
 map("n", "<C-S-f>", function()
-  require("telescope.builtin").live_grep()
-end, { desc = "Search in workspace" })
+  require("telescope.builtin").grep_string({
+    search = "",
+    only_sort_text = true,
+  })
+end, { desc = "Search in workspace (fuzzy)" })
 
 map("v", "<C-S-f>", function()
   vim.cmd('normal! "vy')
   local selection = vim.fn.getreg("v")
   selection = selection:gsub("\n", " ")
   if selection ~= "" then
-    require("telescope.builtin").live_grep({
-      default_text = selection,
+    require("telescope.builtin").grep_string({
+      search = selection,
+      only_sort_text = true,
     })
   else
-    require("telescope.builtin").live_grep()
+    require("telescope.builtin").grep_string({
+      search = "",
+      only_sort_text = true,
+    })
   end
-end, { noremap = true, silent = true, desc = "Telescope search for selected text in workspace" })
+end, { noremap = true, silent = true, desc = "Telescope search for selected text in workspace (fuzzy)" })
 
 -- Buffertabs navigation
 map({ "n" }, "<C-M-Right>", function()
@@ -209,7 +216,7 @@ map({ "n" }, "<S-tab>", function()
   require("bufferline").cycle(-1)
 end, { desc = "cycle to previous buffer" })
 
-map({ "n" }, "<leader>x",  "<cmd>BufferLineCyclePrev<cr><cmd>bdelete! #<cr>", { desc = "close current buffer" })
+map({ "n" }, "<leader>x", "<cmd>BufferLineCyclePrev<cr><cmd>bdelete! #<cr>", { desc = "close current buffer" })
 
 -- Todo comments
 map(
@@ -236,3 +243,4 @@ map("n", "<tab>", function()
     require("bufferline").cycle(1)
   end
 end, { desc = "Accept suggestion or goto next buffer" })
+

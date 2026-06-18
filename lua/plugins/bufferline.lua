@@ -6,6 +6,7 @@ return {
   -- priority = 100,
   opts = {
     options = {
+      sort_by = "insert_after_current",
       -- mode = "tabs",
       -- style_preset = bufferline.style_preset.minimal,
       themable = true,
