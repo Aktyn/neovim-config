@@ -3,9 +3,9 @@ return {
   event = "VeryLazy",
   opts = {
     -- add any options here
-    -- lsp = {
-    --   signature = { auto_open = { trigger = false } },
-    -- },
+    lsp = {
+      signature = { auto_open = { enabled = false, trigger = false, luasnip = false } },
+    },
   },
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

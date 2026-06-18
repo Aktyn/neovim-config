@@ -6,6 +6,8 @@ return {
       local conf = require("nvchad.configs.cmp")
       local luasnip = require("luasnip")
 
+      table.insert(conf.sources, 1, { name = "supermaven" })
+
       conf.mapping["<Tab>"] = cmp.mapping(function(fallback)
         local cursortab_ui_ok, cursortab_ui = pcall(require, "cursortab.ui")
         local cursortab_ok, cursortab = pcall(require, "cursortab")

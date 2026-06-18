@@ -38,7 +38,7 @@ map("i", "<C-v>", "<ESC>pa") -- Paste insert mode
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 map("n", "<C-s>", ":wa<CR>") -- Save
-map("n", "<C-a>", "ggVG", { desc = "Select all" })
+map("n", "<C-M-a>", "ggVG", { desc = "Select all" })
 map("i", "<C-s>", "<C-o>:wa<CR>", { noremap = true, desc = "Save all in insert mode" })
 map("i", "<C-z>", "<C-o>u", { noremap = true, silent = true })
 map("i", "<C-u>", "<Esc><C-r>a", { noremap = true, silent = true })
