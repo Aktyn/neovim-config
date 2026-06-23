@@ -5,6 +5,7 @@ return {
     "folke/snacks.nvim", -- Optional: for the "snacks" terminal provider
   },
   opts = {
+    command = "agy --dangerously-skip-permissions",
     -- See Configuration section for options
     terminal = {
       provider = "native",

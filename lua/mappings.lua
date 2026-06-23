@@ -64,6 +64,7 @@ map("i", "<C-S-Down>", "<Esc>:move .+1<CR>==gi", { noremap = true, silent = true
 -- Linting
 -- nomap("n", "<leader>fm")
 map("n", "<C-S-l>", ":LspEslintFixAll<cr>", { silent = true, noremap = true, desc = "Fix all ESLint issues" })
+map("i", "<C-S-l>", "<Esc>:LspEslintFixAll<CR>i", { silent = true, noremap = true, desc = "Fix all ESLint issues" })
 -- map("n", "<C-l>", "???", { desc = "Format document" })
 
 -- package-info keymaps
@@ -236,11 +237,13 @@ end, { desc = "Toggle Inlay Hints" })
 map("n", "<tab>", function()
   local has_cursortab, cursortab = pcall(require, "cursortab")
   local has_cursortab_ui, cursortab_ui = pcall(require, "cursortab.ui")
+  local has_supermaven, supermaven = pcall(require, "supermaven-nvim.completion_preview")
 
   if has_cursortab and has_cursortab_ui and (cursortab_ui.has_completion() or cursortab_ui.has_cursor_prediction()) then
     cursortab.accept()
+  elseif has_supermaven and supermaven.has_suggestion() then
+    supermaven.on_accept_suggestion()
   else
     require("bufferline").cycle(1)
   end
 end, { desc = "Accept suggestion or goto next buffer" })
-

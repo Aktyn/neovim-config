@@ -46,6 +46,28 @@ return {
       mode = { "n", "v" },
       desc = "Quickfix",
     },
+    {
+      "<leader>cu",
+      function()
+      vim.lsp.buf.code_action({
+        apply = true,
+        context = { only = { "source.removeUnused.ts" }, diagnostics = {} },
+      })
+      end,
+      mode = { "n", "v" },
+      desc = "Remove unused imports",
+    },
+    {
+      "<leader>cm",
+      function()
+      vim.lsp.buf.code_action({
+        apply = true,
+        context = { only = { "source.addMissingImports.ts" }, diagnostics = {} },
+      })
+      end,
+      mode = { "n", "v" },
+      desc = "Add missing imports",
+    },
   },
   config = function()
     require("actions-preview").setup({

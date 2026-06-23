@@ -105,24 +105,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "qf",
-  callback = function()
-    vim.keymap.set("n", "<CR>", function()
-      local qf_win = vim.api.nvim_get_current_win()
-      local is_loclist = vim.fn.getwininfo(qf_win)[1].loclist == 1
-
-      -- Jump to the location
-      local cmd = is_loclist and ".ll" or ".cc"
-      local ok, _ = pcall(vim.cmd, cmd)
-
-      -- Close the quickfix/location list window if jump was successful
-      if ok and vim.api.nvim_win_is_valid(qf_win) then
-        vim.api.nvim_win_close(qf_win, true)
-      end
-    end, { buffer = true })
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "qf",
+--   callback = function()
+--     vim.keymap.set("n", "<CR>", function()
+--       local qf_win = vim.api.nvim_get_current_win()
+--       local is_loclist = vim.fn.getwininfo(qf_win)[1].loclist == 1
+--
+--       -- Jump to the location
+--       local cmd = is_loclist and ".ll" or ".cc"
+--       local ok, _ = pcall(vim.cmd, cmd)
+--
+--       -- Close the quickfix/location list window if jump was successful
+--       if ok and vim.api.nvim_win_is_valid(qf_win) then
+--         vim.api.nvim_win_close(qf_win, true)
+--       end
+--     end, { buffer = true })
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
@@ -134,5 +134,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
 
     vim.cmd(":silent !kitty @ set-spacing padding=0 margin=0")
+  end,
+})
+
+vim.api.nvim_create_autocmd("RecordingEnter", {
+  callback = function()
+    vim.opt.cmdheight = 1
+  end,
+})
+vim.api.nvim_create_autocmd("RecordingLeave", {
+  callback = function()
+    vim.opt.cmdheight = 0
   end,
 })

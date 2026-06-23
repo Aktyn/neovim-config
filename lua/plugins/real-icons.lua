@@ -1,0 +1,41 @@
+return {
+  "Mirsmog/real-icons.nvim",
+  build = ":RealIconsInstallPack material",
+  event = "VeryLazy",
+  opts = {
+    pack = "material",
+    packs = {},
+    overrides = {},
+    backend = "auto",
+    size = {
+      cols = 2,
+      rows = 1,
+      pixels = 64,
+      padding = 0,
+      trim = false,
+    },
+    color = {
+      tint = nil,
+      saturation = 0,
+      brightness = 0,
+      hue = 0,
+      monochrome = false,
+    },
+    fallback = {
+      enabled = true,
+      provider = "auto",
+    },
+    integrations = {
+      bufferline = true,
+      fzf_lua = true,
+      lualine = true,
+      mini_files = true,
+      neo_tree = true,
+      nvim_tree = true,
+      oil = false,
+      snacks_picker = true,
+      telescope = true,
+      telescope_file_browser = true,
+    },
+  },
+}

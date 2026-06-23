@@ -4,6 +4,6 @@ return {
   opts = {
     enable = true,
     mode = "topline",
-    max_lines = 8,
+    max_lines = 0,
   },
 }

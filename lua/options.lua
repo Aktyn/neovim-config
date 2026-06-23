@@ -17,6 +17,9 @@ vim.g.loaded_perl_provider = 0 -- Disable Perl provider
 vim.g.loaded_ruby_provider = 0 -- Disable Ruby provider
 vim.o.guifont = "Monaspace_Neon_Frozen,JetBrainsMono_Nerd_Font_Propo,FreeMono:h11" -- Set GUI font family and size
 
+vim.opt.relativenumber = true
+vim.opt.number = true
+
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "indent"
 vim.opt.foldtext = ""
