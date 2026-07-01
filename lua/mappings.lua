@@ -7,7 +7,8 @@ local nomap = vim.keymap.del
 
 nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
--- nomap("n", "<leader>b")
+nomap("n", "<leader>h")
+-- nomap("n", "<C-S-P>")
 
 -- Window navigation
 map("n", "<C-w>Left", "<C-w>h", { desc = "Window left" })
