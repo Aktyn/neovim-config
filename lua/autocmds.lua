@@ -130,7 +130,15 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
     -- Open tree if starting with a directory or no arguments
     if vim.fn.isdirectory(vim.fn.expand("%:p:h")) == 1 or vim.fn.argc() == 0 then
+      require("nvim-tree").setup({
+        view = {
+          width = function()
+            return math.floor(40)
+          end,
+        },
+      })
       require("nvim-tree.api").tree.open()
+      vim.cmd("wincmd l")
     end
 
     vim.cmd(":silent !kitty @ set-spacing padding=0 margin=0")
