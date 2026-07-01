@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "mceazy2700/antigravity-cli.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",

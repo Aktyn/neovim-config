@@ -247,3 +247,8 @@ map("n", "<tab>", function()
     require("bufferline").cycle(1)
   end
 end, { desc = "Accept suggestion or goto next buffer" })
+
+
+-- Codecompletion mappings
+map("n", "<leader>ai", "<cmd>CodeCompanion<cr>", { desc = "Inline prompt" })
+map("n", "<leader>aa", "<cmd>CodeCompanionChat<cr>", { desc = "Toggle code companion chat" })
