@@ -117,7 +117,6 @@ vim.api.nvim_create_autocmd("FileType", {
       local ok, _ = pcall(vim.cmd, cmd)
 
       -- Close the quickfix/location list window if jump was successful
-      -- TODO: leave if open when jumping with ctrl+enter or something like that
       if ok and vim.api.nvim_win_is_valid(qf_win) then
         vim.api.nvim_win_close(qf_win, true)
       end
