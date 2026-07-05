@@ -8,7 +8,10 @@ local nomap = vim.keymap.del
 nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
 nomap("n", "<leader>h")
--- nomap("n", "<C-S-P>")
+map("n", "<C-Up>", "<C-u>zz", { desc = "Scroll up" })
+map("n", "<C-Down>", "<C-d>zz", { desc = "Scroll down" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 
 -- Window navigation
 map("n", "<C-w>Left", "<C-w>h", { desc = "Window left" })
@@ -61,6 +64,13 @@ map("v", "<C-S-Up>", ":move '<-2<CR>gv=gv", { noremap = true, silent = true })
 map("v", "<C-S-Down>", ":move '>+1<CR>gv=gv", { noremap = true, silent = true })
 map("i", "<C-S-Up>", "<Esc>:move .-2<CR>==gi", { noremap = true, silent = true })
 map("i", "<C-S-Down>", "<Esc>:move .+1<CR>==gi", { noremap = true, silent = true })
+
+-- Delete word backward (Ctrl+Backspace)
+map("i", "<C-BS>", "<C-W>", { desc = "Delete word backward" })
+map("i", "<C-H>", "<C-W>", { desc = "Delete word backward" })
+
+-- Delete word forward (Ctrl+Delete)
+map("i", "<C-DEL>", "<C-O>dw", { desc = "Delete word forward" })
 
 -- Linting
 -- nomap("n", "<leader>fm")
@@ -248,7 +258,6 @@ map("n", "<tab>", function()
     require("bufferline").cycle(1)
   end
 end, { desc = "Accept suggestion or goto next buffer" })
-
 
 -- Codecompletion mappings
 map("n", "<leader>ai", "<cmd>CodeCompanion<cr>", { desc = "Inline prompt" })

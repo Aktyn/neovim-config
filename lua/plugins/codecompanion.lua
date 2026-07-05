@@ -47,12 +47,25 @@ return {
             schema = {
               model = {
                 default = "nvidia/nemotron-3-ultra-550b-a55b:free", -- Set your preferred default model
-                choices = {
-                  "nvidia/nemotron-3-ultra-550b-a55b:free",
-                  "nvidia/nemotron-3-ultra-550b-a55b",
-                  "nvidia/nemotron-3-super-120b-a12b",
-                  "nvidia/nemotron-3-nano-30b-a3b",
-                },
+                -- choices = {
+                --   "nvidia/nemotron-3-ultra-550b-a55b:free",
+                --   "nvidia/nemotron-3-ultra-550b-a55b",
+                --   "nvidia/nemotron-3-super-120b-a12b",
+                --   "nvidia/nemotron-3-nano-30b-a3b",
+                -- },
+              },
+            },
+          })
+        end,
+        ollama = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            env = {
+              url = "http://localhost:11434", -- Default local address
+              -- api_key = os.getenv("OLLAMA_API_KEY"), -- Optional if protected
+            },
+            schema = {
+              model = {
+                default = "gemma4:cloud",
               },
             },
           })

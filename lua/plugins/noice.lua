@@ -5,6 +5,9 @@ return {
     -- add any options here
     lsp = {
       signature = { auto_open = { enabled = false, trigger = false, luasnip = false } },
+      hover = {
+        enabled = false,
+      }
     },
   },
   dependencies = {
@@ -15,4 +18,5 @@ return {
     --   If not available, we use `mini` as the fallback
     "rcarriga/nvim-notify",
   },
+  throttle = 1000 / 10,
 }

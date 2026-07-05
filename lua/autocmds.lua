@@ -131,6 +131,15 @@ vim.api.nvim_create_autocmd("VimEnter", {
     -- Open tree if starting with a directory or no arguments
     if vim.fn.isdirectory(vim.fn.expand("%:p:h")) == 1 or vim.fn.argc() == 0 then
       require("nvim-tree").setup({
+        update_focused_file = {
+          enable = true,
+          update_cwd = true, -- Optional: Updates the tree root to the current buffer's directory
+          ignore_list = {}, -- Optional: List of file patterns to ignore
+        },
+        -- Optional: Sync tree root with working directory on buffer change
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
+
         view = {
           width = function()
             return math.floor(40)
