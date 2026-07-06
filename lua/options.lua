@@ -26,12 +26,27 @@ vim.opt.foldtext = ""
 
 --- Experimental option for synchronizing terminal  with Neovim's background color:
 -- vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
+--   pattern = "*",
 --   callback = function()
 --     local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
---     if not normal.bg then
---       return
---     end
---     io.write(string.format("\027]11;#%06x\027\\", normal.bg))
+    -- if normal.bg then
+    --   io.write(string.format("\027]11;#%06x\027\\", normal.bg))
+    -- end
+
+    -- Highlight bufferline tabs
+    -- local highlights = {
+    --   "BufferLineFill",
+    --   "BufferLineBackground",
+    --   "BufferLineTab",
+    --   "BufferLineTabClose",
+    --   "BufferLineSeparator",
+    --   "BufferLineSeparatorSelected",
+    --   "BufferLineSeparatorVisible",
+    -- }
+    -- for _, hl in ipairs(highlights) do
+    --   vim.api.nvim_set_hl(0, hl, { bg = "NONE", ctermbg = "NONE" })
+    -- end
+    -- vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", fg = "#444444" })
 --   end,
 -- })
 -- vim.api.nvim_create_autocmd("UILeave", {

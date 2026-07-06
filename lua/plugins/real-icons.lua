@@ -1,7 +1,9 @@
 return {
   "Mirsmog/real-icons.nvim",
   build = ":RealIconsInstallPack material",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  lazy = false,
+  priority = 800,
   opts = {
     pack = "material",
     packs = {},
@@ -12,7 +14,7 @@ return {
       rows = 1,
       pixels = 64,
       padding = 0,
-      trim = false,
+      trim = true,
     },
     color = {
       tint = nil,
