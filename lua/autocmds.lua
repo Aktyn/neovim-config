@@ -141,9 +141,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
         respect_buf_cwd = true,
 
         view = {
-          width = function()
-            return math.floor(40)
-          end,
+          width = 48,
+        },
+        filters = {
+          dotfiles = true,
         },
       })
       require("nvim-tree.api").tree.open()
