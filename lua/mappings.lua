@@ -264,3 +264,18 @@ map("n", "<leader>ai", "<cmd>CodeCompanion<cr>", { desc = "Inline prompt" })
 map("n", "<leader>aa", "<cmd>CodeCompanionChat<cr>", { desc = "Toggle code companion chat" })
 
 map("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>", { desc = "Toggle pinned buffer" })
+
+-- Neotest mappings
+map(
+  "n",
+  "<leader>twr",
+  "<cmd>lua require('neotest').run.run({ vitestCommand = 'vitest --watch' })<cr>",
+  {desc = "Run Watch"}
+)
+
+map(
+  "n",
+  "<leader>twf",
+  "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), vitestCommand = 'vitest --watch' })<cr>",
+  {desc = "Run Watch File"}
+)
