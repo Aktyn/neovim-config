@@ -8,7 +8,6 @@ return {
       "~/Programming/*",
       "~/Programming/*project/*",
       "~/.config/*",
-      "~/*/root/*"
     },
     picker = {
       type = "telescope", -- one of "telescope", "fzf-lua", or "snacks"

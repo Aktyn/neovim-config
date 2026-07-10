@@ -9,7 +9,6 @@ return {
 
   priority = 150, -- Set a higher priority to load before neo-tree
   lazy = false,
-  -- event = "VeryLazy",
   config = function()
     require("neo-tree").setup({
       window = {
@@ -51,21 +50,6 @@ return {
 
       git_status = {},
     })
-
-    -- Autocmd to reveal neo-tree buffers on startup
-    -- vim.api.nvim_create_autocmd("VimEnter", {
-    --   group = vim.api.nvim_create_augroup("NeoTreeVimEnter", { clear = true }),
-    --   callback = function()
-    --     -- Only open neo-tree if no files were passed as arguments and it's not already open
-    --     if vim.fn.argc() == 0 then
-    --       local manager = require("neo-tree.sources.manager")
-    --       -- Something is wrong with this line
-    --       if manager and manager.is_opened and manager.is_opened() then
-    --         require("neo-tree.command").reveal("buffers")
-    --       end
-    --     end
-    --   end,
-    -- })
     vim.keymap.set("n", "<leader>T", function()
       vim.cmd("Neotree buffers reveal")
     end, { desc = "Neo-tree Reveal Buffers" })

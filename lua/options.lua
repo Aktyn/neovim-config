@@ -15,7 +15,8 @@ vim.opt.ignorecase = true -- Ignore case in search patterns
 vim.opt.smartcase = true -- Override ignorecase if search pattern contains upper case characters
 vim.g.loaded_perl_provider = 0 -- Disable Perl provider
 vim.g.loaded_ruby_provider = 0 -- Disable Ruby provider
-vim.o.guifont = "Monaspace_Neon_Frozen,JetBrainsMono_Nerd_Font_Propo,FreeMono:h11" -- Set GUI font family and size
+-- vim.o.guifont = "Monaspace_Neon_Frozen,JetBrainsMono_Nerd_Font_Propo,FreeMono:h11" 
+vim.o.guifont = "Monaspace Neon Frozen,JetBrainsMono Nerd Font Propo,Noto Sans Mono:h11"
 
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -23,37 +24,6 @@ vim.opt.number = true
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "indent"
 vim.opt.foldtext = ""
-
---- Experimental option for synchronizing terminal  with Neovim's background color:
--- vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
---   pattern = "*",
---   callback = function()
---     local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-    -- if normal.bg then
-    --   io.write(string.format("\027]11;#%06x\027\\", normal.bg))
-    -- end
-
-    -- Highlight bufferline tabs
-    -- local highlights = {
-    --   "BufferLineFill",
-    --   "BufferLineBackground",
-    --   "BufferLineTab",
-    --   "BufferLineTabClose",
-    --   "BufferLineSeparator",
-    --   "BufferLineSeparatorSelected",
-    --   "BufferLineSeparatorVisible",
-    -- }
-    -- for _, hl in ipairs(highlights) do
-    --   vim.api.nvim_set_hl(0, hl, { bg = "NONE", ctermbg = "NONE" })
-    -- end
-    -- vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", fg = "#444444" })
---   end,
--- })
--- vim.api.nvim_create_autocmd("UILeave", {
---   callback = function()
---     io.write("\027]111\027\\")
---   end,
--- })
 
 vim.diagnostic.config({ update_in_insert = true })
 

@@ -1,7 +1,5 @@
 require("nvchad.mappings")
 
--- add yours here
-
 local map = vim.keymap.set
 local nomap = vim.keymap.del
 
@@ -28,8 +26,6 @@ map("n", "<C-l>", function()
 end, { desc = "Show diagnostics" })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
--- map("n", ":", "<Plug>(cmdpalette)")
--- map("n", ":", "<cmd>lua require('snacks').input.input({}, function() end)<CR>")
 map("i", "jk", "<ESC>")
 map("n", "<leader>go", function()
   require("snacks").gitbrowse()
@@ -270,12 +266,13 @@ map(
   "n",
   "<leader>twr",
   "<cmd>lua require('neotest').run.run({ vitestCommand = 'vitest --watch' })<cr>",
-  {desc = "Run Watch"}
+  { desc = "Run Watch" }
 )
 
 map(
   "n",
   "<leader>twf",
   "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), vitestCommand = 'vitest --watch' })<cr>",
-  {desc = "Run Watch File"}
+  { desc = "Run Watch File" }
 )
+
