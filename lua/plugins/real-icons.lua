@@ -1,7 +1,6 @@
 return {
   "Mirsmog/real-icons.nvim",
   build = ":RealIconsInstallPack material",
-  -- event = "VeryLazy",
   lazy = false,
   priority = 800,
   opts = {
@@ -25,7 +24,7 @@ return {
     },
     fallback = {
       enabled = true,
-      provider = "auto",
+      provider = "devicons",
     },
     integrations = {
       bufferline = true,

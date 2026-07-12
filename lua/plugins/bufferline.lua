@@ -12,7 +12,7 @@ return {
         sort_by = "insert_after_current",
         -- mode = "tabs",
         style_preset = bufferline.style_preset.minimal,
-        themable = false,
+        themable = true,
         separator_style = "thin", -- slant",
         -- separator_style = { " ", " " },
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
@@ -58,12 +58,6 @@ return {
           fg = "NONE",
           bg = "NONE",
         },
-        tab_separator_selected = {
-          fg = "#55ffff",
-          bg = "#55ffff",
-          sp = "#55ffff",
-          -- underline = "#55ffff",
-        },
         buffer_selected = {
           fg = "NONE",
           bg = "NONE",
@@ -89,6 +83,7 @@ return {
       "BufferLineSeparator",
       "BufferLineSeparatorSelected",
       "BufferLineSeparatorVisible",
+      "BufferLineIndicatorSelected"
     }
     for _, hl in ipairs(highlights) do
       vim.api.nvim_set_hl(0, hl, { bg = "NONE", ctermbg = "NONE" })

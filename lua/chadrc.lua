@@ -9,10 +9,12 @@ M.base46 = {
   theme = "onedark",
   transparency = true,
 
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+    -- Overriding foreground color messes up with real-icons plugin causing the icon to dissapear
+    NvimTreeCursorLine = { fg = nil, bg = "#292b2b" },
+  },
 }
 vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
   pattern = "*",
@@ -30,6 +32,11 @@ M.ui = {
   tabufline = {
     enabled = false,
     lazyload = false,
+  },
+  lsp = {
+    signature = {
+      disabled = true,
+    },
   },
 }
 

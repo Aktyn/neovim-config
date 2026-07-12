@@ -6,6 +6,7 @@ local nomap = vim.keymap.del
 nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
 nomap("n", "<leader>h")
+nomap("n", "<leader>n") -- Unmap "toggle line number" mapping
 map("n", "<C-Up>", "<C-u>zz", { desc = "Scroll up" })
 map("n", "<C-Down>", "<C-d>zz", { desc = "Scroll down" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
