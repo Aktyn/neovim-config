@@ -12,7 +12,7 @@ return {
   config = function()
     require("neo-tree").setup({
       window = {
-        position = "right",
+        position = "left",
         width = 50,
         follow_current_file = {
           enabled = true,
@@ -51,7 +51,7 @@ return {
       git_status = {},
     })
     vim.keymap.set("n", "<leader>T", function()
-      vim.cmd("Neotree buffers reveal")
-    end, { desc = "Neo-tree Reveal Buffers" })
+      vim.cmd("Neotree filesystem reveal")
+    end, { desc = "Neo-tree Reveal Files" })
   end,
 }

@@ -36,20 +36,20 @@ return {
           delay = 200,
           reveal = { "close" },
         },
-        offsets = {
-          {
-            filetype = "NvimTree",
-            highlight = "Directory",
-          },
-          -- {
-          --   filetype = "neo-tree",
-          --   highlight = "Directory",
-          --   text_align = "left",
-          -- },
-          {
-            filetype = "snacks_layout_box",
-          },
-        },
+        -- offsets = {
+        --   {
+        --     filetype = "NvimTree",
+        --     highlight = "Directory",
+        --   },
+        --   {
+        --     filetype = "neo-tree",
+        --     highlight = "Directory",
+        --     text_align = "left",
+        --   },
+        --   {
+        --     filetype = "snacks_layout_box",
+        --   },
+        -- },
       },
       highlights = {
         fill = { bg = "NONE", fg = "NONE" },

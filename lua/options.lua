@@ -25,6 +25,9 @@ vim.opt.foldlevel = 99
 vim.opt.foldmethod = "indent"
 vim.opt.foldtext = ""
 
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+
 vim.diagnostic.config({ update_in_insert = true })
 
 -- Neovide specific settings

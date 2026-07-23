@@ -6,13 +6,13 @@
 local M = {}
 
 M.base46 = {
-  theme = "onedark",
+  theme = "kanagawa",
   transparency = true,
 
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
-    -- Overriding foreground color messes up with real-icons plugin causing the icon to dissapear
+    -- Overriding foreground color messes up with real-icons plugin causing the icon to disappear
     NvimTreeCursorLine = { fg = nil, bg = "#292b2b" },
   },
 }
@@ -34,9 +34,7 @@ M.ui = {
     lazyload = false,
   },
   lsp = {
-    signature = {
-      disabled = true,
-    },
+    signature = false,
   },
 }
 

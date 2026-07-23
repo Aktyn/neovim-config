@@ -4,6 +4,7 @@ return {
   version = "v3.x.x",
   -- priority = 100, -- Set a higher priority to load before neo-tree
   -- lazy = false,
+  enabled = false,
   event = "VeryLazy",
   keys = {},
   click = {
@@ -36,11 +37,22 @@ return {
 
       winopt = function(opt)
         -- Ensure minimap uses standard Normal highlight for transparency
-        opt.winhighlight = "Normal:Normal,NormalNC:Normal,FloatBorder:Normal"
+        -- opt.winhighlight = "Normal:Normal,NormalNC:Normal,FloatBorder:Normal"
+        opt.winhighlight = table.concat({
+          "Normal:NeominimapBackground",
+          "FloatBorder:NeominimapBorder",
+          "CursorLine:NeominimapCursorLine",
+          "CursorLineNr:NeominimapCursorLineNr",
+          "CursorLineSign:NeominimapCursorLineSign",
+          "CursorLineFold:NeominimapCursorLineFold",
+        }, ",")
+        opt.cursorline = true
+        opt.spell = false
+        opt.winblend = 100
       end,
 
       search = {
-        enabled = false, ---@type boolean
+        enabled = true, ---@type boolean
         mode = "line",
         priority = 20, ---@type integer
         icon = "󰱽 ", ---@type string
