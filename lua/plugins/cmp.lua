@@ -10,17 +10,18 @@ return {
 
       -- Modify the sorting to always put supermaven first
       conf.sorting = conf.sorting or {}
-      conf.sorting.comparators = conf.sorting.comparators or {
-        cmp.config.compare.offset,
-        cmp.config.compare.exact,
-        cmp.config.compare.score,
-        cmp.config.compare.recently_used,
-        cmp.config.compare.locality,
-        cmp.config.compare.kind,
-        cmp.config.compare.sort_text,
-        cmp.config.compare.length,
-        cmp.config.compare.order,
-      }
+      conf.sorting.comparators = conf.sorting.comparators
+        or {
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        }
 
       table.insert(conf.sorting.comparators, 1, function(entry1, entry2)
         local is_sm1 = entry1.source.name == "supermaven"
@@ -38,6 +39,9 @@ return {
         local cursortab_ok, cursortab = pcall(require, "cursortab")
         local copilot_ok, copilot_suggestion = pcall(require, "copilot.suggestion")
         local has_supermaven, supermaven = pcall(require, "supermaven-nvim.completion_preview")
+        local neocursor_ok, neocursor = pcall(require, "neocursor")
+
+        if neocursor_ok and neocursor.accept() then return end
 
         if cmp.visible() then
           cmp.select_next_item()

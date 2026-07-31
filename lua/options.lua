@@ -27,6 +27,7 @@ vim.opt.foldtext = ""
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+vim.opt.spelloptions = "camel,noplainbuffer"
 
 vim.diagnostic.config({ update_in_insert = true })
 
