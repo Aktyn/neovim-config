@@ -244,3 +244,6 @@ map(
   "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), vitestCommand = 'vitest --watch' })<cr>",
   { desc = "Run Watch File" }
 )
+
+-- DiffBandit mappings
+map("n", "<leader>gdc", ":DiffBanditGitCurrent<cr>", { silent = true, noremap = true, desc = "Diff current file with Git" })

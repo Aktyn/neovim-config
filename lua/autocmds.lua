@@ -73,6 +73,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local ft = vim.bo[bufnr].filetype
 
+    local opts = {noremap = true, silent = true}
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+
     -- Skip native inline completion for some servers.
     -- Neovim's inline-completion "agent" can send synthetic didChange ranges (e.g. end.line=2147483647)
     -- which has been observed to destabilize qmlls.
