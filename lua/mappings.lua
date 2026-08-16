@@ -246,4 +246,9 @@ map(
 )
 
 -- DiffBandit mappings
-map("n", "<leader>gdc", ":DiffBanditGitCurrent<cr>", { silent = true, noremap = true, desc = "Diff current file with Git" })
+map(
+  "n",
+  "<leader>gdc",
+  ":DiffBanditGitCurrent<cr>",
+  { silent = true, noremap = true, desc = "Diff current file with Git" }
+)

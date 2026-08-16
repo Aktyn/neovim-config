@@ -2,7 +2,6 @@ return {
   "folke/noice.nvim",
   event = "VeryLazy",
   opts = {
-    -- TODO: might not be needed anymore due to similar change in chadrc.lua
     lsp = {
       signature = { auto_open = { enabled = false, trigger = false, luasnip = false } },
       hover = {
