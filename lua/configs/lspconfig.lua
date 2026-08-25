@@ -59,6 +59,18 @@ extend_lsp_config("ts_ls", {
 })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-local servers =
-  { "html", "cssls", "tailwindcss", "pylsp", "ts_ls", "eslint", "jsonls", "yamlls", "postgres_lsp", "bashls", "qmlls", "markdown_oxide" }
+local servers = {
+  "html",
+  "cssls",
+  "tailwindcss",
+  "pylsp",
+  "ts_ls",
+  "eslint",
+  "jsonls",
+  "yamlls",
+  "postgres_lsp",
+  "bashls",
+  "qmlls",
+  "markdown_oxide",
+}
 vim.lsp.enable(servers)

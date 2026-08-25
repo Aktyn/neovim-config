@@ -7,10 +7,10 @@ nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
 nomap("n", "<leader>h")
 nomap("n", "<leader>n") -- Unmap "toggle line number" mapping
-map("n", "<C-Up>", "<C-u>zz", { desc = "Scroll up" })
-map("n", "<C-Down>", "<C-d>zz", { desc = "Scroll down" })
-map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
+map("n", "<C-Up>", "<C-u>", { desc = "Scroll up" })
+map("n", "<C-Down>", "<C-d>", { desc = "Scroll down" })
 
 -- Window navigation
 map("n", "<C-w>Left", "<C-w>h", { desc = "Window left" })
@@ -26,7 +26,7 @@ map("n", "<C-l>", function()
   vim.diagnostic.open_float()
 end, { desc = "Show diagnostics" })
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "<leader>go", function()
   require("snacks").gitbrowse()
@@ -181,6 +181,20 @@ map("v", "<C-S-f>", function()
   end
 end, { noremap = true, silent = true, desc = "Telescope search for selected text in workspace (fuzzy)" })
 
+nomap("n", "<leader>fb")
+map("n", "<leader>fb", function()
+  require("telescope.builtin").buffers({
+    sort_mru = true, -- Sort by most recently used
+    ignore_current_buffer = true,
+  })
+end, { desc = "Recent buffers" })
+map(
+  "n",
+  "<Leader><Leader>",
+  [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+  { noremap = true, silent = true, desc = "Recent files" }
+)
+
 -- Buffertabs navigation
 map({ "n" }, "<C-M-Right>", function()
   require("bufferline").move(1)
@@ -251,4 +265,24 @@ map(
   "<leader>gdc",
   ":DiffBanditGitCurrent<cr>",
   { silent = true, noremap = true, desc = "Diff current file with Git" }
+)
+
+-- Overseer mappings
+map(
+  "n",
+  "<leader>oo",
+  ":OverseerToggle<cr>",
+  { silent = true, noremap = true, desc = "Toggle overseer panel" }
+)
+map(
+  "n",
+  "<leader>or",
+  ":OverseerRun<cr>",
+  { silent = true, noremap = true, desc = "Run overseer task template" }
+)
+map(
+  "n",
+  "<leader>ot",
+  ":OverseerTaskAction<cr>",
+  { silent = true, noremap = true, desc = "Select overseer task" }
 )
