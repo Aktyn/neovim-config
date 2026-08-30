@@ -78,7 +78,7 @@ return {
       desc = "Toggle Flash Search",
     },
     {
-      "8",
+      "g*",
       mode = { "n", "x", "o" },
       function()
         require("flash").jump({

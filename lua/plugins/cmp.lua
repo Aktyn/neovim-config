@@ -8,6 +8,15 @@ return {
 
       table.insert(conf.sources, 1, { name = "supermaven" })
 
+      -- Disable LSP snippets only (keep luasnip snippets intact)
+      for _, source in ipairs(conf.sources) do
+        if source.name == "nvim_lsp" then
+          source.entry_filter = function(entry)
+            return cmp.lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+          end
+        end
+      end
+
       -- Modify the sorting to always put supermaven first
       conf.sorting = conf.sorting or {}
       conf.sorting.comparators = conf.sorting.comparators
@@ -41,7 +50,9 @@ return {
         local has_supermaven, supermaven = pcall(require, "supermaven-nvim.completion_preview")
         local neocursor_ok, neocursor = pcall(require, "neocursor")
 
-        if neocursor_ok and neocursor.accept() then return end
+        if neocursor_ok and neocursor.accept() then
+          return
+        end
 
         if cmp.visible() then
           cmp.select_next_item()

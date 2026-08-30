@@ -27,4 +27,27 @@ return {
       },
     },
   },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        mappings = {
+          i = { -- Insert mode mappings
+            ["<C-Up>"] = require("telescope.actions").cycle_history_prev,
+            ["<C-Down>"] = require("telescope.actions").cycle_history_next,
+          },
+          n = { -- Normal mode mappings
+            ["<C-Up>"] = require("telescope.actions").cycle_history_prev,
+            ["<C-Down>"] = require("telescope.actions").cycle_history_next,
+          },
+        },
+      },
+      extensions = {
+        recent_files = {
+          only_cwd = true,
+        },
+      },
+    },
+  }
 }
