@@ -72,5 +72,29 @@ local servers = {
   "bashls",
   "qmlls",
   "markdown_oxide",
+  "clangd",
+  "cmake",
 }
+extend_lsp_config("clangd", {
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+    "--completion-style=detailed",
+    "--function-arg-placeholders",
+    "--fallback-style=llvm",
+  },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+})
+
+extend_lsp_config("cmake", {
+  cmd = { "cmake-language-server" },
+  filetypes = { "cmake" },
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    on_dir(vim.fs.dirname(vim.fs.find({ "CMakeLists.txt", "build" }, { upward = true, path = fname })[1] or fname))
+  end,
+})
+
 vim.lsp.enable(servers)
