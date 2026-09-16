@@ -34,26 +34,23 @@ vim.lsp.config("qmlls", {
   end,
 })
 
+local js_ts_inlay_hints_options = {
+  includeInlayParameterNameHints = "literals",
+  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  includeInlayFunctionParameterTypeHints = true,
+  includeInlayVariableTypeHints = true,
+  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+  includeInlayPropertyDeclarationTypeHints = true,
+  includeInlayFunctionLikeReturnTypeHints = true,
+  includeInlayEnumMemberValueHints = false,
+}
 extend_lsp_config("ts_ls", {
   settings = {
     typescript = {
-      inlayHints = {
-        includeInlayParameterNameHints = "all",
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      },
+      inlayHints = js_ts_inlay_hints_options,
     },
     javascript = {
-      inlayHints = {
-        includeInlayParameterNameHints = "all",
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-      },
+      inlayHints = js_ts_inlay_hints_options,
     },
   },
 })

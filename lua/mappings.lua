@@ -12,6 +12,8 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
 map("n", "<C-Up>", "<C-u>", { desc = "Scroll up" })
 map("n", "<C-Down>", "<C-d>", { desc = "Scroll down" })
 
+map("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
+
 -- Window navigation
 map("n", "<C-w>Left", "<C-w>h", { desc = "Window left" })
 map("n", "<C-w>Down", "<C-w>j", { desc = "Window down" })
@@ -26,8 +28,22 @@ map("n", "<C-l>", function()
   vim.diagnostic.open_float()
 end, { desc = "Show diagnostics" })
 
+-- Remap delete and change motions to use black hole register
+map('n', 'x', 'd', { noremap = true, silent = true })
+map('n', 'xx', 'dd', { noremap = true, silent = true })
+map('n', 'X', 'D', { noremap = true, silent = true })
+map('n', 'd', '"_d', { noremap = true, silent = true })
+map('n', 'D', '"_D', { noremap = true, silent = true })
+map('n', 'c', '"_c', { noremap = true, silent = true })
+map('n', 'C', '"_C', { noremap = true, silent = true })
+map('v', 'x', 'd', { noremap = true, silent = true })
+map('v', 'X', 'D', { noremap = true, silent = true })
+map('v', 'd', '"_d', { noremap = true, silent = true })
+map('v', 'D', '"_D', { noremap = true, silent = true })
+map('v', 'c', '"_c', { noremap = true, silent = true })
+map('v', 'C', '"_C', { noremap = true, silent = true })
+
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
 map("n", "<leader>go", function()
   require("snacks").gitbrowse()
 end, { desc = "Open file on remote" })

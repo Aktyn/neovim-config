@@ -11,11 +11,12 @@ return {
         up_and_jump = "<up>",
         down_and_jump = "<down>",
       },
-      -- symbol_folding = {
-      --   auto_unfold = {
-      --     only = 2,
-      --   },
-      -- },
+      symbol_folding = {
+        autofold_depth = 2,
+        auto_unfold = {
+          hovered = true,
+        },
+      },
     })
   end,
 }

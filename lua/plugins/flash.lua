@@ -3,6 +3,12 @@ return {
   event = "VeryLazy",
   priority = 60,
   opts = {
+    label = {
+      rainbow = {
+        enabled = true,
+        shade = 5, -- number between 1 and 9
+      },
+    },
     modes = {
       search = {
         enabled = true,
