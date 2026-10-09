@@ -41,11 +41,11 @@ return {
         --     filetype = "NvimTree",
         --     highlight = "Directory",
         --   },
-        --   {
-        --     filetype = "neo-tree",
-        --     highlight = "Directory",
-        --     text_align = "left",
-        --   },
+        -- {
+        --   filetype = "neo-tree",
+        --   highlight = "Directory",
+        --   text_align = "left",
+        -- },
         --   {
         --     filetype = "snacks_layout_box",
         --   },
@@ -83,7 +83,7 @@ return {
       "BufferLineSeparator",
       "BufferLineSeparatorSelected",
       "BufferLineSeparatorVisible",
-      "BufferLineIndicatorSelected"
+      "BufferLineIndicatorSelected",
     }
     for _, hl in ipairs(highlights) do
       vim.api.nvim_set_hl(0, hl, { bg = "NONE", ctermbg = "NONE" })

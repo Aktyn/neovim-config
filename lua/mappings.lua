@@ -255,8 +255,8 @@ map("n", "<tab>", function()
 end, { desc = "Accept suggestion or goto next buffer" })
 
 -- Codecompletion mappings
-map("n", "<leader>ai", "<cmd>CodeCompanion<cr>", { desc = "Inline prompt" })
-map("n", "<leader>aa", "<cmd>CodeCompanionChat<cr>", { desc = "Toggle code companion chat" })
+map("n", "<leader>aci", "<cmd>CodeCompanion<cr>", { desc = "Inline prompt" })
+map("n", "<leader>aca", "<cmd>CodeCompanionChat<cr>", { desc = "Toggle code companion chat" })
 
 map("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>", { desc = "Toggle pinned buffer" })
 
