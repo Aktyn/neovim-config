@@ -15,7 +15,7 @@ vim.opt.ignorecase = true -- Ignore case in search patterns
 vim.opt.smartcase = true -- Override ignorecase if search pattern contains upper case characters
 vim.g.loaded_perl_provider = 0 -- Disable Perl provider
 vim.g.loaded_ruby_provider = 0 -- Disable Ruby provider
-vim.o.guifont = "Monaspace Neon Frozen,JetBrainsMono Nerd Font Propo,Noto Sans Mono:h11"
+vim.o.guifont = "Maple Mono Normal,Monaspace Neon Frozen,JetBrainsMono Nerd Font Propo,Noto Sans Mono:h11"
 
 vim.opt.relativenumber = true
 vim.opt.number = true

@@ -1,7 +1,8 @@
 return {
   "Mirsmog/real-icons.nvim",
-  build = ":RealIconsInstallPack material",
+  build = ":RealIcons install",
   lazy = false,
+  event = "VimEnter",
   priority = 800,
   opts = {
     pack = "material",
@@ -28,15 +29,15 @@ return {
     },
     integrations = {
       bufferline = true,
-      fzf_lua = true,
-      lualine = true,
-      mini_files = true,
+      fzf_lua = false,
+      lualine = false,
+      mini_files = false,
       neo_tree = true,
-      nvim_tree = true,
+      nvim_tree = false,
       oil = false,
       snacks_picker = true,
       telescope = true,
-      telescope_file_browser = true,
+      -- telescope_file_browser = true,
     },
   },
 }

@@ -7,7 +7,6 @@ return {
     -- "ravitemer/mcphub.nvim" -- ?
   },
   event = "VeryLazy",
-  version = "^19.0.0", -- Watch out for breaking changes when updating
   opts = {
     interactions = {
       chat = {
