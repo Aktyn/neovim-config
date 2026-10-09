@@ -1,3 +1,4 @@
+-- FZF native sorter for telescope
 return {
   "nvim-telescope/telescope-fzf-native.nvim",
   dependencies = { "nvim-telescope/telescope.nvim" },

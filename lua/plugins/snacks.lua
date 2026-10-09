@@ -1,3 +1,4 @@
+-- Snacks utilities for Neovim
 return {
   "folke/snacks.nvim",
   lazy = false,

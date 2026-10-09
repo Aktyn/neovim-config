@@ -1,3 +1,4 @@
+-- Enhanced cursor and tab completion with AI
 return {
   "teocns/neocursor.nvim",
   -- lazy = false,

@@ -1,3 +1,4 @@
+-- Automatically close unused buffers
 return {
   "chrisgrieser/nvim-early-retirement",
   event = "VeryLazy",

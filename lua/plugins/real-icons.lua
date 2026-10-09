@@ -1,3 +1,4 @@
+-- Real icons integration for file explorers and pickers
 return {
   "Mirsmog/real-icons.nvim",
   build = ":RealIcons install",

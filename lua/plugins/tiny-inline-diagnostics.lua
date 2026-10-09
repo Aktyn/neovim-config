@@ -1,3 +1,4 @@
+-- Tiny inline diagnostics display
 return {
   {
     "rachartier/tiny-inline-diagnostic.nvim",

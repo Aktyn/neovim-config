@@ -1,3 +1,4 @@
+-- Bufferline for managing open buffers
 return {
   "akinsho/bufferline.nvim",
   version = "*",

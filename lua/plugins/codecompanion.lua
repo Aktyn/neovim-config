@@ -1,3 +1,4 @@
+-- AI code companion assistant
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {

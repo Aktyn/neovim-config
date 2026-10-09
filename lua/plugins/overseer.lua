@@ -1,3 +1,4 @@
+-- Task runner for Neovim
 return {
     'stevearc/overseer.nvim',
     event = 'VeryLazy',

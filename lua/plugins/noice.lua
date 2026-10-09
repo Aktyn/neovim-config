@@ -1,3 +1,4 @@
+-- Highly experimental UI for messages, cmdline and popupmenu
 return {
   "folke/noice.nvim",
   event = "VeryLazy",

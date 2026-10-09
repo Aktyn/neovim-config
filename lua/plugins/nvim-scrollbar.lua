@@ -1,3 +1,4 @@
+-- Scrollbar with diagnostic and git status highlights
 return {
   "petertriho/nvim-scrollbar",
   event = "BufReadPost",

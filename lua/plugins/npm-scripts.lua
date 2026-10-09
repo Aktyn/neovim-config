@@ -1,3 +1,4 @@
+-- Run npm scripts from within Neovim
 return {
   "maxolasersquad/npm-scripts.nvim",
   cmd = { "Npm" },

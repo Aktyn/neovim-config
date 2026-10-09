@@ -1,3 +1,4 @@
+-- Harpoon file navigation lists
 return {
   "frenchef156/harpoon-lists.nvim",
   dependencies = {

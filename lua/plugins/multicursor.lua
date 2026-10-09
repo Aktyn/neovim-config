@@ -1,3 +1,4 @@
+-- Multiple cursors editing plugin
 return {
   "jake-stewart/multicursor.nvim",
   event = "VeryLazy",

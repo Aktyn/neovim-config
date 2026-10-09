@@ -1,3 +1,4 @@
+-- Live preview of Markdown files in browser
 return {
   "sammaji/markdown-preview.nvim",
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

@@ -1,3 +1,4 @@
+-- OpenCode AI assistant integration
 return {
   "sudo-tee/opencode.nvim",
   event = "VeryLazy",

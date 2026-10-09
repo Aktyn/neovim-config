@@ -1,3 +1,4 @@
+-- Flash enhances search and navigation
 return {
   "folke/flash.nvim",
   event = "VeryLazy",

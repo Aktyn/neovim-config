@@ -1,3 +1,4 @@
+-- Treesitter context hints (biscuits) at the end of blocks
 return {
   "code-biscuits/nvim-biscuits",
   dependencies = {

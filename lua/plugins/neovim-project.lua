@@ -1,3 +1,4 @@
+-- Project management and session handling
 -- Projects manager
 return {
   "coffebar/neovim-project",

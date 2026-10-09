@@ -1,3 +1,4 @@
+-- Show context of code blocks using Treesitter
 return {
   "nvim-treesitter/nvim-treesitter-context",
   event = "VeryLazy",

@@ -1,3 +1,4 @@
+-- Enhanced quickfix window features
 return {
   'stevearc/quicker.nvim',
   ft = "qf",

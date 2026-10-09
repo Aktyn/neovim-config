@@ -1,3 +1,4 @@
+-- Enhanced LSP UI handlers
 return {
   "RishabhRD/nvim-lsputils",
   lazy = false,

@@ -1,3 +1,4 @@
+-- Cursor tab completion with Copilot integration
 return {
   {
     "cursortab/cursortab.nvim",

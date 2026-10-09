@@ -1,3 +1,4 @@
+-- SQL and Database client interface inside Neovim
 return {
     "2giosangmitom/sqmeow.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },

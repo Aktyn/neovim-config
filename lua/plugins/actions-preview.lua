@@ -1,3 +1,4 @@
+-- Preview code actions from LSP
 return {
   "aznhe21/actions-preview.nvim",
   dependencies = {

@@ -1,3 +1,4 @@
+-- Autocompletion engine configuration
 return {
   {
     "hrsh7th/nvim-cmp",

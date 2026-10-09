@@ -1,3 +1,4 @@
+-- Git worktrees management via Telescope
 return {
   "GRVYDEV/worky.nvim",
   lazy = true,

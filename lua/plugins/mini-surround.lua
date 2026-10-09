@@ -1,3 +1,4 @@
+-- Surround plugin (add/delete/replace)
 return {
   "nvim-mini/mini.surround",
   event = "VeryLazy",
