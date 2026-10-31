@@ -1,12 +1,15 @@
 -- Scrollbar with diagnostic and git status highlights
 return {
   "petertriho/nvim-scrollbar",
+  branch = "v1",
   event = "BufReadPost",
   dependencies = {
     "kevinhwang91/nvim-hlslens",
     "lewis6991/gitsigns.nvim",
   },
   config = function()
+    vim.g.scrollbar_v2_notice = false
+
     require("hlslens").setup()
     require("scrollbar.handlers.search").setup()
     require("scrollbar.handlers.gitsigns").setup()

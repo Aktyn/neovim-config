@@ -7,6 +7,7 @@ return {
     "ravitemer/codecompanion-history.nvim",
     -- "ravitemer/mcphub.nvim" -- ?
   },
+  enabled = false,
   event = "VeryLazy",
   opts = {
     interactions = {
