@@ -95,3 +95,6 @@ extend_lsp_config("cmake", {
 })
 
 vim.lsp.enable(servers)
+
+-- LSP progress indicator (spinner + percentage in the message area)
+require("configs.lsp-progress")
