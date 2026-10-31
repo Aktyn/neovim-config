@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "kanagawa",
+  theme = "tomorrow_night",
   transparency = true,
 
   hl_override = {
@@ -16,6 +16,7 @@ M.base46 = {
     NvimTreeCursorLine = { fg = nil, bg = "#292b2b" },
   },
 }
+
 vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
   pattern = "*",
   callback = function()

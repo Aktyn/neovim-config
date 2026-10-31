@@ -29,24 +29,29 @@ map("n", "<C-l>", function()
 end, { desc = "Show diagnostics" })
 
 -- Remap delete and change motions to use black hole register
-map('n', 'x', 'd', { noremap = true, silent = true })
-map('n', 'xx', 'dd', { noremap = true, silent = true })
-map('n', 'X', 'D', { noremap = true, silent = true })
-map('n', 'd', '"_d', { noremap = true, silent = true })
-map('n', 'D', '"_D', { noremap = true, silent = true })
-map('n', 'c', '"_c', { noremap = true, silent = true })
-map('n', 'C', '"_C', { noremap = true, silent = true })
-map('v', 'x', 'd', { noremap = true, silent = true })
-map('v', 'X', 'D', { noremap = true, silent = true })
-map('v', 'd', '"_d', { noremap = true, silent = true })
-map('v', 'D', '"_D', { noremap = true, silent = true })
-map('v', 'c', '"_c', { noremap = true, silent = true })
-map('v', 'C', '"_C', { noremap = true, silent = true })
+map("n", "x", "d", { noremap = true, silent = true })
+map("n", "xx", "dd", { noremap = true, silent = true })
+map("n", "X", "D", { noremap = true, silent = true })
+map("n", "d", '"_d', { noremap = true, silent = true })
+map("n", "D", '"_D', { noremap = true, silent = true })
+map("n", "c", '"_c', { noremap = true, silent = true })
+map("n", "C", '"_C', { noremap = true, silent = true })
+map("v", "x", "d", { noremap = true, silent = true })
+map("v", "X", "D", { noremap = true, silent = true })
+map("v", "d", '"_d', { noremap = true, silent = true })
+map("v", "D", '"_D', { noremap = true, silent = true })
+map("v", "c", '"_c', { noremap = true, silent = true })
+map("v", "C", '"_C', { noremap = true, silent = true })
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<leader>go", function()
   require("snacks").gitbrowse()
 end, { desc = "Open file on remote" })
+
+map("n", "<leader>to", function()
+  local base46 = require("base46")
+  base46.toggle_transparency()
+end, { desc = "Toggle transparency" })
 
 map("n", "<leader><leader>", ":Telescope find_files hidden=false<cr>", { desc = "Find files within open project" })
 map("n", "<leader>bb", ":buffer #<cr>", { desc = "Select previous buffer" })
@@ -284,21 +289,6 @@ map(
 )
 
 -- Overseer mappings
-map(
-  "n",
-  "<leader>oo",
-  ":OverseerToggle<cr>",
-  { silent = true, noremap = true, desc = "Toggle overseer panel" }
-)
-map(
-  "n",
-  "<leader>or",
-  ":OverseerRun<cr>",
-  { silent = true, noremap = true, desc = "Run overseer task template" }
-)
-map(
-  "n",
-  "<leader>ot",
-  ":OverseerTaskAction<cr>",
-  { silent = true, noremap = true, desc = "Select overseer task" }
-)
+map("n", "<leader>oo", ":OverseerToggle<cr>", { silent = true, noremap = true, desc = "Toggle overseer panel" })
+map("n", "<leader>or", ":OverseerRun<cr>", { silent = true, noremap = true, desc = "Run overseer task template" })
+map("n", "<leader>ot", ":OverseerTaskAction<cr>", { silent = true, noremap = true, desc = "Select overseer task" })
