@@ -4,7 +4,7 @@ return {
   event = "VeryLazy",
   -- config = true,
   opts = {
-    retirementAgeMins = 30,
-    minimumBufferNum = 4,
+    retirementAgeMins = 60,
+    minimumBufferNum = 6,
   },
 }

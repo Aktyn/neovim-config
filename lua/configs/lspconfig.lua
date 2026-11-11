@@ -1,5 +1,13 @@
 require("nvchad.configs.lspconfig").defaults()
 
+-- Global LSP client flags for all servers
+vim.lsp.config("*", {
+  flags = {
+    allow_incremental_sync = true,
+    debounce_text_changes = 300,
+  },
+})
+
 -- read :h vim.lsp.config for changing options of LSP servers
 
 vim.diagnostic.config({ virtual_text = false })
@@ -71,6 +79,7 @@ local servers = {
   "markdown_oxide",
   "clangd",
   "cmake",
+  "taplo",
 }
 extend_lsp_config("clangd", {
   cmd = {
@@ -95,6 +104,28 @@ extend_lsp_config("cmake", {
 })
 
 vim.lsp.enable(servers)
+
+-- bacon-ls: live cargo/clippy diagnostics on every keystroke.
+-- rust-analyzer cannot run cargo check on unsaved buffers, so we let
+-- bacon-ls own the cargo diagnostics and keep rust-analyzer for completion,
+-- hover, go-to-definition, and its own (lighter) incremental diagnostics.
+vim.lsp.config("bacon-ls", {
+  cmd = { "bacon-ls" },
+  filetypes = { "rust" },
+  init_options = {
+    cargo = { updateOnInsert = true },
+  },
+  settings = {
+    bacon_ls = {
+      backend = "cargo",
+      cargo = {
+        command = "clippy",
+        updateOnInsertDebounceMillis = 500,
+      },
+    },
+  },
+})
+vim.lsp.enable("bacon-ls")
 
 -- LSP progress indicator (spinner + percentage in the message area)
 require("configs.lsp-progress")

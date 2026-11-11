@@ -6,8 +6,8 @@ local options = {
     c = { "clang_format" },
     cpp = { "clang_format" },
     cmake = { "cmake_format" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
+    rust = { "rustfmt" },
+    toml = { "taplo" },
   },
   default_format_opts = {
     lsp_format = "prefer", -- Use LSP formatter if available

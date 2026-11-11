@@ -21,7 +21,11 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 
 vim.opt.foldlevel = 99
-vim.opt.foldmethod = "indent"
+vim.opt.foldlevelstart = 99 -- Never auto-fold on open (default -1 closes deep folds)
+vim.opt.foldminlines = 0 -- Allow folding even small blocks
+-- vim.opt.foldmethod = "indent" -- "manual"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = ""
 
 vim.opt.spell = true

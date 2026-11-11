@@ -14,7 +14,6 @@ return {
       enabled = true,
       doc = {
         inline = true, --false
---         float = true,
         max_width = 40,
         max_height = 40,
       },
@@ -23,7 +22,7 @@ return {
     animate = { enabled = true },
     scroll = { enabled = true },
     words = { enabled = true },
-    bigfile = { enabled = true },
+    bigfile = { enabled = true, size = 1024 * 512 },
     git = { enabled = true },
   },
   keys = {

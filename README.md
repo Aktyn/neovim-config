@@ -13,8 +13,10 @@ git clone https://github.com/Aktyn/neovim-config ~/.config/nvim
 - **AI-assisted coding** — OpenCode, Neocursor, and inline completion support
 - **Intelligent navigation** — Flash for jump-to characters, Harpoon for file lists, Telescope for fuzzy finding, and Treesitter-based text objects
 - **File & project management** — Neo-tree explorer, project-aware sessions, LazyGit integration, and Git worktrees via Worky
-- **Refactoring & editing** — Multi-cursor support, smart surround, real file icons, auto-closing tags, and enhanced code actions preview
-- **LSP & diagnostics** — nvim-lspconfig with 13+ servers, inline diagnostics via Tiny Inline Diagnostic, and custom LSP handlers from nvim-lsputils
+- **Refactoring & editing** — Multi-cursor support, smart surround, real file icons, auto-closing pairs/tags, and enhanced code actions preview
+- **LSP & diagnostics** — nvim-lspconfig with 15+ servers (incl. bacon-ls for live cargo/clippy diagnostics), inline diagnostics via Tiny Inline Diagnostic, and custom LSP handlers from nvim-lsputils
+- **Code folding** — Treesitter-based folding via nvim-ufo, with peek-under-cursor on `K`
+- **Rust tooling** — rustaceanvim for the LSP, crates.nvim for Cargo.toml editing, and conform's rustfmt/taplo integration
 - **Testing & tasks** — Neotest for Vitest, Overseer task runner, and npm scripts execution
 - **Productivity extras** — SQL client (Sqmeow), markdown preview, diff viewer (DiffBandit), and auto-closing idle buffers
 
@@ -25,11 +27,15 @@ git clone https://github.com/Aktyn/neovim-config ~/.config/nvim
 | Plugin | Description |
 |--------|-------------|
 | [NvChad/NvChad](https://github.com/NvChad/NvChad) | Neovim distribution & UI framework (v2.5) |
-| [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | Formatter client supporting multiple formatters |
-| [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP client configuration with 13+ servers |
+| [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) | Formatter client supporting multiple formatters (incl. rustfmt, taplo) |
+| [mrcjkb/rustaceanvim](https://github.com/mrcjkb/rustaceanvim) | Rust-analyzer integration & rust tooling |
+| [saecki/crates.nvim](https://github.com/saecki/crates.nvim) | Cargo.toml dependency management |
+| [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP client configuration with 15+ servers |
 | [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Incremental parsing for syntax highlighting |
+| [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) | Treesitter-based code folding with peek-under-cursor |
 | [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy file/dict/grep finder |
 | [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) | Auto close and rename HTML/JSX tags |
+| [altermo/ultimate-autopair.nvim](https://github.com/altermo/ultimate-autopair.nvim) | Treesitter-aware auto-pairing (quotes, brackets, parens) with multiline support |
 | [hedyhli/outline.nvim](https://github.com/hedyhli/outline.nvim) | Code outline/sidebar via LSP symbols |
 | [folke/noice.nvim](https://github.com/folke/noice.nvim) | Advanced UI for messages, cmdline & popups |
 | [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) | File explorer tree |
@@ -73,5 +79,5 @@ git clone https://github.com/Aktyn/neovim-config ~/.config/nvim
 ## Showcase
 
 ![Preview 1](./showcase/preview-1.png)
-![Preview 1](./showcase/preview-2.png)
-![Preview 1](./showcase/preview-3.png)
+![Preview 2](./showcase/preview-2.png)
+![Preview 3](./showcase/preview-3.png)
