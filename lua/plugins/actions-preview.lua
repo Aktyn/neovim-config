@@ -38,6 +38,13 @@ local action_kinds = {
     add_missing = "quickfix",
     fix_all = "quickfix",
   },
+  -- bacon-ls: does NOT expose source.* actions. Fixes come from cargo/clippy
+  -- diagnostics as "quickfix" actions, so we fall back to that.
+  bacon_ls = {
+    remove_unused = "quickfix",
+    add_missing = "quickfix",
+    fix_all = "quickfix",
+  },
   -- gopls (Go)
   gopls = {
     remove_unused = "source.removeUnused.go",

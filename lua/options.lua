@@ -27,12 +27,14 @@ vim.opt.foldminlines = 0 -- Allow folding even small blocks
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = ""
+vim.o.scrolloff = 20
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.spelloptions = "camel,noplainbuffer"
 
 vim.diagnostic.config({ update_in_insert = true })
+vim.g.lazyvim_rust_diagnostics = "bacon-ls" -- "rust-analyzer"
 
 -- Neovide specific settings
 if vim.g.neovide then

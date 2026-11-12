@@ -22,8 +22,16 @@ return {
     opts = {
       compilers = { "clang" },
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css", "typescript", "tsx", "javascript"
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "typescript",
+        "tsx",
+        "javascript",
+        "rust",
+        "ron",
       },
     },
   },
@@ -49,5 +57,5 @@ return {
         },
       },
     },
-  }
+  },
 }

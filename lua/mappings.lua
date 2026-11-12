@@ -266,6 +266,22 @@ map("n", "<leader>aca", "<cmd>CodeCompanionChat<cr>", { desc = "Toggle code comp
 map("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>", { desc = "Toggle pinned buffer" })
 
 -- Neotest mappings
+map("n", "<leader>tn", function()
+  require("neotest").run.run()
+end, { desc = "Run nearest test" })
+
+map("n", "<leader>tf", function()
+  require("neotest").run.run(vim.fn.expand("%"))
+end, { desc = "Run test file" })
+
+map("n", "<leader>ts", function()
+  require("neotest").summary.toggle()
+end, { desc = "Toggle test summary" })
+
+map("n", "<leader>tp", function()
+  require("neotest").output.open({ enter = true })
+end, { desc = "Show test output" })
+
 map(
   "n",
   "<leader>twr",
